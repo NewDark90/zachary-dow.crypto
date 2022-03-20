@@ -1,0 +1,31 @@
+{
+  "name": "zachary-dow-website",
+  "version": "1.0.0",
+  "description": "Personal Website for Zachary Dow",
+  "main": "index.ts",
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewDark90/zachary-dow.crypto.git"
+  },
+  "author": "Zachary Dow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NewDark90/zachary-dow.crypto/issues"
+  },
+  "homepage": "https://github.com/NewDark90/zachary-dow.crypto#readme",
+  "devDependencies": {
+    "@stencil/core": "2.13.0",
+    "@stencil/router": "^1.0.1",
+    "@types/jest": "^27.0.3",
+    "jest": "^27.4.5",
+    "jest-cli": "^27.4.5",
+    "puppeteer": "^10.0.0"
+  }
+}
