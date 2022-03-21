@@ -5,62 +5,61 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
 export namespace Components {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match": MatchResults;
-    }
     interface AppRoot {
+    }
+    interface BlockchainBlock {
+        "blockName": string;
+    }
+    interface BlockchainDisplay {
     }
 }
 declare global {
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
-    }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLBlockchainBlockElement extends Components.BlockchainBlock, HTMLStencilElement {
+    }
+    var HTMLBlockchainBlockElement: {
+        prototype: HTMLBlockchainBlockElement;
+        new (): HTMLBlockchainBlockElement;
+    };
+    interface HTMLBlockchainDisplayElement extends Components.BlockchainDisplay, HTMLStencilElement {
+    }
+    var HTMLBlockchainDisplayElement: {
+        prototype: HTMLBlockchainDisplayElement;
+        new (): HTMLBlockchainDisplayElement;
+    };
     interface HTMLElementTagNameMap {
-        "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "blockchain-block": HTMLBlockchainBlockElement;
+        "blockchain-display": HTMLBlockchainDisplayElement;
     }
 }
 declare namespace LocalJSX {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
     interface AppRoot {
     }
+    interface BlockchainBlock {
+        "blockName"?: string;
+    }
+    interface BlockchainDisplay {
+    }
     interface IntrinsicElements {
-        "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
+        "blockchain-block": BlockchainBlock;
+        "blockchain-display": BlockchainDisplay;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "blockchain-block": LocalJSX.BlockchainBlock & JSXBase.HTMLAttributes<HTMLBlockchainBlockElement>;
+            "blockchain-display": LocalJSX.BlockchainDisplay & JSXBase.HTMLAttributes<HTMLBlockchainDisplayElement>;
         }
     }
 }

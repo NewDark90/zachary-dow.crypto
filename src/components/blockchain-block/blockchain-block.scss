@@ -1,0 +1,23 @@
+@use "../../styles/palette" as palette;
+
+:host {
+    box-sizing: border-box;
+    display: block;
+    white-space: normal;
+    border: 1px solid palette.$primary-white;
+    text-align: center;
+
+    width: 80vw;
+    height: 80vh;
+    margin: 10vh 10vw;
+
+    scroll-snap-align: start;
+
+    &:first-of-type {
+        margin-top: 10vh;
+    }
+
+    &:last-of-type {
+        margin-bottom: 10vh;
+    }
+}
