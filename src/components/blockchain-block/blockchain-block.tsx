@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core';
+import { BlockNames } from '../../env';
 
 @Component({
     tag: 'blockchain-block',
@@ -7,7 +8,7 @@ import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core';
 })
 export class BlockchainBlock implements ComponentInterface
 {
-    @Prop() blockName: string;
+    @Prop() blockName: BlockNames;
 
     render()
     {

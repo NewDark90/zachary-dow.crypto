@@ -13,7 +13,7 @@ export class AppRoot implements ComponentInterface
         return (
             <Host>
                 <header>
-                    <h1 class="title">Stencil App Starter</h1>
+                    <navigation-menu></navigation-menu>
                 </header>
 
                 <main>

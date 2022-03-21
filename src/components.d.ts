@@ -5,13 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { BlockNames } from "./env";
 export namespace Components {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "blockName": string;
+        "blockName": BlockNames;
     }
     interface BlockchainDisplay {
+    }
+    interface NavigationMenu {
     }
 }
 declare global {
@@ -33,24 +36,34 @@ declare global {
         prototype: HTMLBlockchainDisplayElement;
         new (): HTMLBlockchainDisplayElement;
     };
+    interface HTMLNavigationMenuElement extends Components.NavigationMenu, HTMLStencilElement {
+    }
+    var HTMLNavigationMenuElement: {
+        prototype: HTMLNavigationMenuElement;
+        new (): HTMLNavigationMenuElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "blockchain-block": HTMLBlockchainBlockElement;
         "blockchain-display": HTMLBlockchainDisplayElement;
+        "navigation-menu": HTMLNavigationMenuElement;
     }
 }
 declare namespace LocalJSX {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "blockName"?: string;
+        "blockName"?: BlockNames;
     }
     interface BlockchainDisplay {
+    }
+    interface NavigationMenu {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "blockchain-block": BlockchainBlock;
         "blockchain-display": BlockchainDisplay;
+        "navigation-menu": NavigationMenu;
     }
 }
 export { LocalJSX as JSX };
@@ -60,6 +73,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "blockchain-block": LocalJSX.BlockchainBlock & JSXBase.HTMLAttributes<HTMLBlockchainBlockElement>;
             "blockchain-display": LocalJSX.BlockchainDisplay & JSXBase.HTMLAttributes<HTMLBlockchainDisplayElement>;
+            "navigation-menu": LocalJSX.NavigationMenu & JSXBase.HTMLAttributes<HTMLNavigationMenuElement>;
         }
     }
 }
