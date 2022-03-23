@@ -7,9 +7,9 @@
     border: 1px solid styles.$primary-white;
     text-align: center;
 
-    width: 80vw;
-    height: 80vh;
-    margin: 10vh 10vw;
+    width: styles.$blockchain-block-width;
+    height: styles.$blockchain-block-height;
+    margin: ((100vh - styles.$blockchain-block-height) * 0.5) auto;
 
     scroll-snap-align: start;
 

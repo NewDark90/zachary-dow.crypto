@@ -14,6 +14,10 @@ export namespace Components {
     }
     interface BlockchainDisplay {
     }
+    interface CodeBit {
+    }
+    interface CodeCube {
+    }
     interface NavigationMenu {
     }
 }
@@ -36,6 +40,18 @@ declare global {
         prototype: HTMLBlockchainDisplayElement;
         new (): HTMLBlockchainDisplayElement;
     };
+    interface HTMLCodeBitElement extends Components.CodeBit, HTMLStencilElement {
+    }
+    var HTMLCodeBitElement: {
+        prototype: HTMLCodeBitElement;
+        new (): HTMLCodeBitElement;
+    };
+    interface HTMLCodeCubeElement extends Components.CodeCube, HTMLStencilElement {
+    }
+    var HTMLCodeCubeElement: {
+        prototype: HTMLCodeCubeElement;
+        new (): HTMLCodeCubeElement;
+    };
     interface HTMLNavigationMenuElement extends Components.NavigationMenu, HTMLStencilElement {
     }
     var HTMLNavigationMenuElement: {
@@ -46,6 +62,8 @@ declare global {
         "app-root": HTMLAppRootElement;
         "blockchain-block": HTMLBlockchainBlockElement;
         "blockchain-display": HTMLBlockchainDisplayElement;
+        "code-bit": HTMLCodeBitElement;
+        "code-cube": HTMLCodeCubeElement;
         "navigation-menu": HTMLNavigationMenuElement;
     }
 }
@@ -57,12 +75,18 @@ declare namespace LocalJSX {
     }
     interface BlockchainDisplay {
     }
+    interface CodeBit {
+    }
+    interface CodeCube {
+    }
     interface NavigationMenu {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "blockchain-block": BlockchainBlock;
         "blockchain-display": BlockchainDisplay;
+        "code-bit": CodeBit;
+        "code-cube": CodeCube;
         "navigation-menu": NavigationMenu;
     }
 }
@@ -73,6 +97,8 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "blockchain-block": LocalJSX.BlockchainBlock & JSXBase.HTMLAttributes<HTMLBlockchainBlockElement>;
             "blockchain-display": LocalJSX.BlockchainDisplay & JSXBase.HTMLAttributes<HTMLBlockchainDisplayElement>;
+            "code-bit": LocalJSX.CodeBit & JSXBase.HTMLAttributes<HTMLCodeBitElement>;
+            "code-cube": LocalJSX.CodeCube & JSXBase.HTMLAttributes<HTMLCodeCubeElement>;
             "navigation-menu": LocalJSX.NavigationMenu & JSXBase.HTMLAttributes<HTMLNavigationMenuElement>;
         }
     }

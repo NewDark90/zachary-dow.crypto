@@ -13,7 +13,7 @@ export class BlockchainDisplay implements ComponentInterface
         return (
             <Host>
                 <blockchain-block block-name="test1">
-                    <div>Content 1</div>
+                    <code-cube></code-cube>
                 </blockchain-block>
                 <blockchain-block block-name="test2">
                     <div>Content 2</div>

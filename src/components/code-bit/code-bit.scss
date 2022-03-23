@@ -1,0 +1,38 @@
+/*
+    While I found it easier to encapsulate the logic of this element on it's own, I don't think it needs to have the styles injected in every shadow dom element.
+    I'm already mildly bloating the dom and event cycle with many listeners, so let's not exacerbate issues.
+
+    Find styles @ code-cube.scss
+
+    (maybe), commiting to this file for now >.>
+*/
+
+@use "../../styles";
+
+:host {
+    display: inline;
+    animation-name: fadeInBlink;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    font-weight: bold;
+    color: styles.$secondary-green;
+}
+
+:host([delay="0"]) { animation-delay: 0.0s; animation-duration: 1.5s; }
+:host([delay="1"]) { animation-delay: -0.1s; animation-duration: 1.5s; }
+:host([delay="2"]) { animation-delay: -0.2s; animation-duration: 1.6s; }
+:host([delay="3"]) { animation-delay: -0.3s; animation-duration: 1.6s; }
+:host([delay="4"]) { animation-delay: -0.4s; animation-duration: 1.6s; }
+:host([delay="5"]) { animation-delay: -0.5s; animation-duration: 1.4s; }
+:host([delay="6"]) { animation-delay: -0.6s; animation-duration: 1.4s; }
+:host([delay="7"]) { animation-delay: -0.7s; animation-duration: 1.4s; }
+:host([delay="8"]) { animation-delay: -0.8s; animation-duration: 1.5s; }
+:host([delay="9"]) { animation-delay: -0.9s; animation-duration: 1.5s; }
+
+@keyframes fadeInBlink {
+     0% { opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}

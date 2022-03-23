@@ -1,0 +1,162 @@
+@use "../../styles";
+@use "sass:list";
+
+$scene-width: (styles.$blockchain-block-width * 0.5);
+$scene-height: (styles.$blockchain-block-height * 0.5);
+$scene-depth: (styles.$blockchain-block-height * 0.5);
+
+$box-width: $scene-width;
+$box-height: $scene-height;
+$box-depth: $scene-depth;
+
+$bg-opacity: 0.7;
+
+@mixin front-back {
+    width: $box-width;
+    height: $box-height;
+}
+
+@mixin left-right {
+    width: $box-depth;
+    height: $box-height;
+    left: calc((calc($box-width + 0px) - calc($box-depth + 0px)) * 0.5);
+}
+
+@mixin top-bottom {
+    width: $box-width;
+    height: $box-depth;
+}
+
+:host {
+    display: block;
+    box-sizing: border-box;
+    font-family: "Courier New", Courier, monospace;
+
+    width: $scene-width;
+    height: $scene-height;
+    //border: 1px solid #ccc;
+    //margin: 80px;
+    perspective: calc(calc($scene-width + 0px) + calc($scene-height + 0px));
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .cube {
+        width: $box-width;
+        height: $box-height;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+        transform: translateZ(-($box-depth));
+
+        animation-name: spinToPosition;
+        animation-delay: 0s;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
+    }
+
+    .face {
+        position: absolute;
+        border: 2px solid styles.$secondary-green;
+        font-size: 40px;
+        font-weight: bold;
+        overflow-wrap: break-word;
+        color: white;
+        text-align: center;
+
+        display: grid;
+        grid-template-columns: repeat(var(--bit-width, 8), 1fr);
+        grid-template-rows: repeat(var(--bit-height, 4), 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .front {
+        @include front-back;
+        //background: hsla(0, 100%, 50%, $bg-opacity);
+        transform: rotateY(0deg) translateZ(($box-depth * 0.5));
+    }
+    .back {
+        @include front-back;
+        //background: hsla(120, 100%, 50%, $bg-opacity);
+        transform: rotateY(180deg) translateZ(($box-depth * 0.5));
+    }
+    .right {
+        @include left-right;
+        //background: hsla(60, 100%, 50%, $bg-opacity);
+        transform: rotateY(90deg) translateZ(($box-width * 0.5));
+    }
+    .left {
+        @include left-right;
+        //background: hsla(180, 100%, 50%, $bg-opacity);
+        transform: rotateY(-90deg) translateZ(($box-width * 0.5));
+    }
+    .top {
+        @include top-bottom;
+        //background: hsla(240, 100%, 50%, $bg-opacity);
+        transform: rotateX(90deg) translateZ(($box-height * 0.5));
+    }
+    .bottom {
+        @include top-bottom;
+        //background: hsla(300, 100%, 50%, $bg-opacity);
+        transform: rotateX(-90deg) translateZ(($box-height * 0.5));
+    }
+
+    .cube.show-front {
+        transform: translateZ(-($box-depth)) rotateY(0deg);
+    }
+    .cube.show-right {
+        transform: translateZ(-($box-depth)) rotateY(-90deg);
+    }
+    .cube.show-back {
+        transform: translateZ(-($box-depth)) rotateY(-180deg);
+    }
+    .cube.show-left {
+        transform: translateZ(-($box-depth)) rotateY(90deg);
+    }
+    .cube.show-top {
+        transform: translateZ(-($box-depth)) rotateX(-90deg);
+    }
+    .cube.show-bottom {
+        transform: translateZ(-($box-depth)) rotateX(90deg);
+    }
+}
+
+@keyframes spinToPosition {
+    0% {
+        transform: translateZ(-($box-depth)) rotateY(0deg) rotateX(0deg);
+    }
+    25% {
+        transform: translateZ(-($box-depth)) rotateY(90deg) rotateX(180deg);
+    }
+    50% {
+        transform: translateZ(-($box-depth)) rotateY(180deg) rotateX(360deg);
+    }
+    75% {
+        transform: translateZ(-($box-depth)) rotateY(270deg) rotateX(540deg);
+    }
+    100% {
+        transform: translateZ(-($box-depth)) rotateY(360deg) rotateX(720deg);
+    }
+}
+
+@keyframes lockIn {
+    0% {
+        perspective: calc(calc($scene-width + 0px) + calc($scene-height + 0px));
+    }
+
+    60% {
+        perspective: calc(calc(calc($scene-width + 0px) + calc($scene-height + 0px)) * 10);
+    }
+
+    95% {
+        perspective: calc(calc(calc($scene-width + 0px) + calc($scene-height + 0px)) * 100);
+    }
+
+    100% {
+        perspective: none;
+    }
+}
