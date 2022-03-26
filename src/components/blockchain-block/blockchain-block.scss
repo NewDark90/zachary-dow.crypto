@@ -1,11 +1,12 @@
 @use "../../styles";
 
 :host {
+    position: relative;
     box-sizing: border-box;
-    display: block;
     white-space: normal;
     border: 1px solid styles.$primary-white;
     text-align: center;
+    display: block;
 
     width: styles.$blockchain-block-width;
     height: styles.$blockchain-block-height;

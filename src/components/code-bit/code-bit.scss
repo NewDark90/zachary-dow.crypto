@@ -9,26 +9,34 @@
 
 @use "../../styles";
 
+$baseDuration: 2.25s;
+
+@function fadeDuration($incrementPercent) {
+    @return $baseDuration + ($incrementPercent * $baseDuration)
+};
+
 :host {
     display: inline;
     animation-name: fadeInBlink;
-    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-duration: fadeDuration(0);
     animation-iteration-count: infinite;
     animation-direction: normal;
+    animation-timing-function: ease-in;
     font-weight: bold;
     color: styles.$secondary-green;
 }
 
-:host([delay="0"]) { animation-delay: 0.0s; animation-duration: 1.5s; }
-:host([delay="1"]) { animation-delay: -0.1s; animation-duration: 1.5s; }
-:host([delay="2"]) { animation-delay: -0.2s; animation-duration: 1.6s; }
-:host([delay="3"]) { animation-delay: -0.3s; animation-duration: 1.6s; }
-:host([delay="4"]) { animation-delay: -0.4s; animation-duration: 1.6s; }
-:host([delay="5"]) { animation-delay: -0.5s; animation-duration: 1.4s; }
-:host([delay="6"]) { animation-delay: -0.6s; animation-duration: 1.4s; }
-:host([delay="7"]) { animation-delay: -0.7s; animation-duration: 1.4s; }
-:host([delay="8"]) { animation-delay: -0.8s; animation-duration: 1.5s; }
-:host([delay="9"]) { animation-delay: -0.9s; animation-duration: 1.5s; }
+:host([delay="0"]) { animation-delay: 0.0s; animation-duration: fadeDuration(0); }
+:host([delay="1"]) { animation-delay: -0.1s; animation-duration: fadeDuration(0.1); }
+:host([delay="2"]) { animation-delay: -0.2s; animation-duration: fadeDuration(0.2); }
+:host([delay="3"]) { animation-delay: -0.3s; animation-duration: fadeDuration(0.2); }
+:host([delay="4"]) { animation-delay: -0.4s; animation-duration: fadeDuration(0.3); }
+:host([delay="5"]) { animation-delay: -0.5s; animation-duration: fadeDuration(-0.3); }
+:host([delay="6"]) { animation-delay: -0.6s; animation-duration: fadeDuration(-0.2); }
+:host([delay="7"]) { animation-delay: -0.7s; animation-duration: fadeDuration(-0.2); }
+:host([delay="8"]) { animation-delay: -0.8s; animation-duration: fadeDuration(-0.1); }
+:host([delay="9"]) { animation-delay: -0.9s; animation-duration: fadeDuration(0); }
 
 @keyframes fadeInBlink {
      0% { opacity: 0; }

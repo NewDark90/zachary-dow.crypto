@@ -10,6 +10,9 @@ $box-height: $scene-height;
 $box-depth: $scene-depth;
 
 $bg-opacity: 0.7;
+$side: calc((var(--pos-x, 1) * 2) - 1);
+$out-of-frame-start: calc(80vw * $side);
+$to-frame-step: calc($out-of-frame-start * 0.2);
 
 @mixin front-back {
     width: $box-width;
@@ -29,9 +32,14 @@ $bg-opacity: 0.7;
 
 :host {
     display: block;
+    position: absolute;
+    left: calc(var(--pos-x, 0) * 50%);
+    top: calc(var(--pos-y, 0) * 50%);
     box-sizing: border-box;
     font-family: "Courier New", Courier, monospace;
 
+    user-select: none;
+    cursor: default;
     width: $scene-width;
     height: $scene-height;
     //border: 1px solid #ccc;
@@ -48,19 +56,14 @@ $bg-opacity: 0.7;
         position: relative;
         transform-style: preserve-3d;
         transition: transform 1s;
-        transform: translateZ(-($box-depth));
-
-        animation-name: spinToPosition;
-        animation-delay: 0s;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-direction: normal;
-        animation-timing-function: linear;
+        transform: translateX($out-of-frame-start) translateZ(-($box-depth));
+        z-index: -100;
     }
 
     .face {
         position: absolute;
         border: 2px solid styles.$secondary-green;
+        background: rgb(0,0,0, 1);
         font-size: 40px;
         font-weight: bold;
         overflow-wrap: break-word;
@@ -72,6 +75,14 @@ $bg-opacity: 0.7;
         grid-template-rows: repeat(var(--bit-height, 4), 1fr);
         justify-content: center;
         align-items: center;
+    }
+
+    .content-cover {
+        position: absolute;
+        top: 0;
+        width: $box-width;
+        height: $box-height;
+        background-color: rgba(0,0,0,0);
     }
 
     .front {
@@ -87,12 +98,12 @@ $bg-opacity: 0.7;
     .right {
         @include left-right;
         //background: hsla(60, 100%, 50%, $bg-opacity);
-        transform: rotateY(90deg) translateZ(($box-width * 0.5));
+        transform: rotateY(90deg) /*rotateZ(180deg)*/ translateZ(($box-width * 0.5));
     }
     .left {
         @include left-right;
         //background: hsla(180, 100%, 50%, $bg-opacity);
-        transform: rotateY(-90deg) translateZ(($box-width * 0.5));
+        transform: rotateY(-90deg) /*rotateZ(180deg)*/  translateZ(($box-width * 0.5));
     }
     .top {
         @include top-bottom;
@@ -104,59 +115,93 @@ $bg-opacity: 0.7;
         //background: hsla(300, 100%, 50%, $bg-opacity);
         transform: rotateX(-90deg) translateZ(($box-height * 0.5));
     }
+}
 
-    .cube.show-front {
-        transform: translateZ(-($box-depth)) rotateY(0deg);
+:host(.animate)
+{
+    animation-name: lockIn;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    .cube {
+        animation-name: spinToPosition;
+        animation-delay: 0s;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
     }
-    .cube.show-right {
-        transform: translateZ(-($box-depth)) rotateY(-90deg);
+
+    .content-cover {
+        animation: contentCoverReveal;
+        animation-delay: 0s;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
     }
-    .cube.show-back {
-        transform: translateZ(-($box-depth)) rotateY(-180deg);
-    }
-    .cube.show-left {
-        transform: translateZ(-($box-depth)) rotateY(90deg);
-    }
-    .cube.show-top {
-        transform: translateZ(-($box-depth)) rotateX(-90deg);
-    }
-    .cube.show-bottom {
-        transform: translateZ(-($box-depth)) rotateX(90deg);
+
+    @for $i from 1 through 4 {
+        :host(:nth-of-type(#{$i})) {
+            animation-delay: $i * 0.75s;
+            .cube {
+                animation-delay: $i * 0.75s;
+            }
+            .content-cover {
+                animation-delay: $i * 0.75s;
+            }
+        }
     }
 }
 
+$x-inc: 180deg;
+$y-inc: 180deg;
+
 @keyframes spinToPosition {
     0% {
-        transform: translateZ(-($box-depth)) rotateY(0deg) rotateX(0deg);
+        transform: translateX($out-of-frame-start) translateZ(-($box-depth)) rotateY($y-inc * 0) rotateX($x-inc * 0);
     }
-    25% {
-        transform: translateZ(-($box-depth)) rotateY(90deg) rotateX(180deg);
+    6% {
+        transform: translateX(calc($out-of-frame-start - calc($to-frame-step * 1))) translateZ(-($box-depth)) rotateY($y-inc * 1) rotateX($x-inc * 1);
     }
-    50% {
-        transform: translateZ(-($box-depth)) rotateY(180deg) rotateX(360deg);
+    18% {
+        transform: translateX(calc($out-of-frame-start - calc($to-frame-step * 2))) translateZ(-($box-depth)) rotateY($y-inc * 2) rotateX($x-inc * 2);
     }
-    75% {
-        transform: translateZ(-($box-depth)) rotateY(270deg) rotateX(540deg);
+    36% {
+        transform: translateX(calc($out-of-frame-start - calc($to-frame-step * 3))) translateZ(-($box-depth)) rotateY($y-inc * 3) rotateX($x-inc * 3);
     }
-    100% {
-        transform: translateZ(-($box-depth)) rotateY(360deg) rotateX(720deg);
+    60%, 100% {
+        transform: translateX(0) translateZ(-($box-depth)) rotateY($y-inc * 4) rotateX($x-inc * 4);
     }
 }
 
 @keyframes lockIn {
-    0% {
+    0%, 60% {
         perspective: calc(calc($scene-width + 0px) + calc($scene-height + 0px));
     }
-
-    60% {
+    70% {
         perspective: calc(calc(calc($scene-width + 0px) + calc($scene-height + 0px)) * 10);
     }
-
-    95% {
+    79% {
         perspective: calc(calc(calc($scene-width + 0px) + calc($scene-height + 0px)) * 100);
     }
-
-    100% {
+    80%, 100% {
         perspective: none;
+    }
+}
+
+@keyframes contentCoverReveal {
+
+    0%, 79% {
+        background-color: rgba(styles.$secondary-green, 0);
+    }
+    90% {
+        background-color: rgba(styles.$secondary-green, 1);
+    }
+    100% {
+        background-color: rgba(255,255,255, 1);
     }
 }

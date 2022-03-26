@@ -17,6 +17,7 @@ export namespace Components {
     interface CodeBit {
     }
     interface CodeCube {
+        "animateCube": boolean;
     }
     interface NavigationMenu {
     }
@@ -78,6 +79,7 @@ declare namespace LocalJSX {
     interface CodeBit {
     }
     interface CodeCube {
+        "animateCube"?: boolean;
     }
     interface NavigationMenu {
     }

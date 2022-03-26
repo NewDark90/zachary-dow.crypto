@@ -11,6 +11,7 @@
         width: 100%;
         box-sizing: border-box;
         height: styles.$header-size;
+        z-index: 1000;
 
         .title {
             margin: 0;

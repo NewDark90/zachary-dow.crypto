@@ -1,6 +1,7 @@
 import { Component, Host, h, State, Listen } from '@stencil/core';
 import { randomBit, randomInt } from '../../util';
 
+const rareEmojis = [ "✊", "🤝", "🌎", "🌹", "🕊", "⛓", "❤️", "🖤", "💚", "☮️", "🟥", "⬛️", "🌲", "🏴", "☭" ];
 
 @Component({
     tag: 'code-bit',
@@ -10,13 +11,19 @@ import { randomBit, randomInt } from '../../util';
 export class CodeBit
 {
     private animationDelay = randomInt(0, 10);
+    private readonly emojiRarity = 80;
 
-    @State() bit: 0 | 1 = randomBit();
+    @State() bit: 0 | 1 | string = randomBit();
 
     @Listen("animationiteration")
     animationIteration(_event: AnimationEvent)
     {
-        this.bit = randomBit();
+        const randomResult = randomInt(0, rareEmojis.length * this.emojiRarity);
+
+        if (randomResult < rareEmojis.length)
+            this.bit = rareEmojis[randomResult];
+        else
+            this.bit = (randomResult % 2) as 0 | 1;
     }
 
     render()
