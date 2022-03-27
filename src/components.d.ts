@@ -11,13 +11,16 @@ export namespace Components {
     }
     interface BlockchainBlock {
         "blockName": BlockNames;
+        "position": "left" | "right";
     }
     interface BlockchainDisplay {
     }
     interface CodeBit {
+        "animation": "animate" | "idle" | undefined;
     }
     interface CodeCube {
-        "animateCube": boolean;
+        "animation"?: "animate" | "idle";
+        "idleCube": boolean;
     }
     interface NavigationMenu {
     }
@@ -73,13 +76,16 @@ declare namespace LocalJSX {
     }
     interface BlockchainBlock {
         "blockName"?: BlockNames;
+        "position"?: "left" | "right";
     }
     interface BlockchainDisplay {
     }
     interface CodeBit {
+        "animation"?: "animate" | "idle" | undefined;
     }
     interface CodeCube {
-        "animateCube"?: boolean;
+        "animation"?: "animate" | "idle";
+        "idleCube"?: boolean;
     }
     interface NavigationMenu {
     }

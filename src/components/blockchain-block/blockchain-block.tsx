@@ -9,18 +9,30 @@ import { BlockNames } from '../../env';
 export class BlockchainBlock implements ComponentInterface
 {
     @Prop() blockName: BlockNames;
+    @Prop() position: "left" | "right";
 
-    @State() animateCubes: boolean = false;
+    @State() animation?: "idle" | "animate";
 
     render()
     {
         return (
             <Host>
-                <button style={{"position": "absolute", "top": "-20px"}} onClick={(e) => { this.animateCubes = true; console.log("click", e)}}>Click me</button>
-                <code-cube animate-cube={this.animateCubes} style={{"--pos-x": "1", "--pos-y": "0"}}></code-cube>
-                <code-cube animate-cube={this.animateCubes} style={{"--pos-x": "0", "--pos-y": "0" }}></code-cube>
-                <code-cube animate-cube={this.animateCubes} style={{"--pos-x": "0", "--pos-y": "1"}}></code-cube>
-                <code-cube animate-cube={this.animateCubes} style={{"--pos-x": "1", "--pos-y": "1"}}></code-cube>
+                <button 
+                    style={{"position": "absolute", "top": "-60px"}} 
+                    onClick={(_e) => { 
+                        this.animation = undefined;
+                    }}>Unset</button>
+                <button 
+                    style={{"position": "absolute", "top": "-40px"}} 
+                    onClick={(_e) => { 
+                        this.animation = "idle";
+                    }}>Idle</button>
+                <button 
+                    style={{"position": "absolute", "top": "-20px"}} 
+                    onClick={(_e) => { 
+                        this.animation = "animate";
+                    }}>Animate</button>
+                <code-cube animation={this.animation} style={{"--pos-x": "0", "--pos-y": "0"}}></code-cube>
                 <div class="content-wrapper">
                     <slot></slot>
                 </div>

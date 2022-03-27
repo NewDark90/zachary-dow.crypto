@@ -1,35 +1,30 @@
-import { Component, Host, h, State, Listen } from '@stencil/core';
-import { randomBit, randomInt } from '../../util';
-
-const rareEmojis = [ "✊", "🤝", "🌎", "🌹", "🕊", "⛓", "❤️", "🖤", "💚", "☮️", "🟥", "⬛️", "🌲", "🏴", "☭" ];
+import { Component, Host, h, State, Listen, Prop, ComponentInterface } from '@stencil/core';
+import { randomInt, bitList } from '../../util';
 
 @Component({
     tag: 'code-bit',
     styleUrl: 'code-bit.scss',
     shadow: true,
 })
-export class CodeBit
+export class CodeBit implements ComponentInterface
 {
     private animationDelay = randomInt(0, 10);
-    private readonly emojiRarity = 80;
+    private bitState = bitList.newState();
 
-    @State() bit: 0 | 1 | string = randomBit();
+    @Prop() animation: "animate" | "idle" | undefined;
+
+    @State() bit: string = bitList.getBit(this.bitState);
 
     @Listen("animationiteration")
     animationIteration(_event: AnimationEvent)
     {
-        const randomResult = randomInt(0, rareEmojis.length * this.emojiRarity);
-
-        if (randomResult < rareEmojis.length)
-            this.bit = rareEmojis[randomResult];
-        else
-            this.bit = (randomResult % 2) as 0 | 1;
+        this.bit = bitList.getBit(this.bitState);
     }
 
     render()
     {
         return (
-            <Host bit={this.bit} delay={this.animationDelay}>
+            <Host class={{"animate": this.animation === "animate" || this.animation === "idle"}} delay={this.animationDelay}>
                 { this.bit }
             </Host>
         );

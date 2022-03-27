@@ -9,14 +9,15 @@ export class CodeCube
 {
     private width: number = 8;
     private height: number = 4;
-    @Prop() animateCube: boolean = false;
+    @Prop({mutable: true}) animation?: "animate" | "idle";
+    @Prop() idleCube: boolean = false;
 
     private getBitElements()
     {
         return Array.from(
             new Array(this.width * this.height),
             () => {
-                return <code-bit></code-bit>
+                return <code-bit animation={this.animation}></code-bit>
             });
     }
 
@@ -27,7 +28,9 @@ export class CodeCube
                 "--bit-width": `${this.width}`,
                 "--bit-height": `${this.height}`
                 }}
-                class={{"animate": this.animateCube}}
+                class={{
+                    [this.animation]: this.animation ? true : false,
+                }}
                 >
                 <div class="cube">
                     <div class="face front">

@@ -1,18 +1,15 @@
 @use "../../styles";
 @use "sass:list";
 
-$scene-width: (styles.$blockchain-block-width * 0.5);
-$scene-height: (styles.$blockchain-block-height * 0.5);
-$scene-depth: (styles.$blockchain-block-height * 0.5);
+$scene-width: (styles.$blockchain-block-width * 1);
+$scene-height: (styles.$blockchain-block-height * 1);
+$scene-depth: (styles.$blockchain-block-height * 1);
 
 $box-width: $scene-width;
 $box-height: $scene-height;
 $box-depth: $scene-depth;
 
 $bg-opacity: 0.7;
-$side: calc((var(--pos-x, 1) * 2) - 1);
-$out-of-frame-start: calc(80vw * $side);
-$to-frame-step: calc($out-of-frame-start * 0.2);
 
 @mixin front-back {
     width: $box-width;
@@ -30,11 +27,18 @@ $to-frame-step: calc($out-of-frame-start * 0.2);
     height: $box-depth;
 }
 
+@mixin animation-common {
+    animation-delay: 0s;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+
+
 :host {
     display: block;
     position: absolute;
-    left: calc(var(--pos-x, 0) * 50%);
-    top: calc(var(--pos-y, 0) * 50%);
     box-sizing: border-box;
     font-family: "Courier New", Courier, monospace;
 
@@ -51,12 +55,13 @@ $to-frame-step: calc($out-of-frame-start * 0.2);
     }
 
     .cube {
+        display: none;
         width: $box-width;
         height: $box-height;
         position: relative;
         transform-style: preserve-3d;
         transition: transform 1s;
-        transform: translateX($out-of-frame-start) translateZ(-($box-depth));
+        transform: translateZ(($box-depth) * -2);
         z-index: -100;
     }
 
@@ -117,49 +122,37 @@ $to-frame-step: calc($out-of-frame-start * 0.2);
     }
 }
 
+:host(.idle)
+{
+    .cube {
+        display: block;
+        animation-name: idleSpin;
+        @include animation-common;
+        animation-duration: 10s;
+    }
+}
+
 :host(.animate)
 {
     animation-name: lockIn;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
+    @include animation-common;
 
     .cube {
+        display: block;
         animation-name: spinToPosition;
-        animation-delay: 0s;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-direction: normal;
-        animation-timing-function: linear;
+        @include animation-common;
     }
 
     .content-cover {
         animation: contentCoverReveal;
-        animation-delay: 0s;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-direction: normal;
-        animation-timing-function: linear;
-    }
-
-    @for $i from 1 through 4 {
-        :host(:nth-of-type(#{$i})) {
-            animation-delay: $i * 0.75s;
-            .cube {
-                animation-delay: $i * 0.75s;
-            }
-            .content-cover {
-                animation-delay: $i * 0.75s;
-            }
-        }
+        @include animation-common;
     }
 }
 
 $x-inc: 180deg;
 $y-inc: 180deg;
 
+/*
 @keyframes spinToPosition {
     0% {
         transform: translateX($out-of-frame-start) translateZ(-($box-depth)) rotateY($y-inc * 0) rotateX($x-inc * 0);
@@ -175,6 +168,37 @@ $y-inc: 180deg;
     }
     60%, 100% {
         transform: translateX(0) translateZ(-($box-depth)) rotateY($y-inc * 4) rotateX($x-inc * 4);
+    }
+}
+*/
+
+@keyframes idleSpin {
+    0% {
+        transform: translateZ($box-depth * -20) rotateY(0deg) rotateX(0deg);
+    }
+    50% {
+        transform: translateZ($box-depth * -20) rotateY(180deg) rotateX(180deg);
+    }
+    100% {
+        transform: translateZ($box-depth * -20) rotateY(360deg) rotateX(360deg);
+    }
+}
+
+@keyframes spinToPosition {
+    0% {
+        transform: translateZ($box-depth * -20) rotateY($y-inc * 0) rotateX($x-inc * 0);
+    }
+    6% {
+        transform: translateZ($box-depth * -10) rotateY($y-inc * 1) rotateX($x-inc * 1);
+    }
+    18% {
+        transform: translateZ($box-depth * -6) rotateY($y-inc * 2) rotateX($x-inc * 2);
+    }
+    36% {
+        transform: translateZ($box-depth * -3) rotateY($y-inc * 3) rotateX($x-inc * 3);
+    }
+    60%, 100% {
+        transform: translateZ($box-depth * -1) rotateY($y-inc * 4) rotateX($x-inc * 4);
     }
 }
 
