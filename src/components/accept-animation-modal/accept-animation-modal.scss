@@ -1,0 +1,79 @@
+@use "../../styles";
+@use "sass:color";
+
+accept-animation-modal {
+    text-align: center;
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+
+    background-color: rgba(styles.$primary-gray, 0.7);
+
+    .title {
+        width: 100%;
+        font-weight: bold;
+        font-size: 4rem;
+        text-transform: uppercase;
+    }
+
+    .disclaimer {
+        font-size: 1rem;
+    }
+
+    .dialog {
+        display: flex;
+        width: 100%;
+        max-width: 900px;
+        height: 50vh;
+        margin: 25vh auto;
+        border-radius: 10px;
+        border: 4px solid rgba(styles.$primary-white, 1);
+        background-color: rgba(styles.$primary-black, 1);
+
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .button-wrap {
+        flex-basis: 50%;
+    }
+
+    button.choice {
+        font-size: 5rem;
+        border-radius: 1rem;
+        border: 8px solid;
+        background-color: rgba(0,0,0,0);
+        width: 80%;
+        padding: 1rem;
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        &.yes {
+            color: styles.$secondary-green;
+            border-color: styles.$secondary-green;
+            &:hover {
+                //color: color.adjust(styles.$primary-green, $lightness: 40%);
+                border-color: color.adjust(styles.$primary-green, $lightness: 40%);
+            }
+        }
+
+        &.no {
+            color: styles.$primary-red;
+            border-color: styles.$primary-red;
+
+            &:hover {
+                //color: color.adjust(styles.$primary-red, $lightness: 30%);
+                border-color: color.adjust(styles.$primary-red, $lightness: 30%);
+            }
+        }
+    }
+}

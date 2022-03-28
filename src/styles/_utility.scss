@@ -1,11 +1,26 @@
 @mixin hover-active-focus {
-    &:hover, &:active, &:focus {
+    &:hover,
+    &:active,
+    &:focus {
         @content;
     }
 }
 
 @mixin hover-active {
-    &:hover, &:active {
+    &:hover,
+    &:active {
+        @content;
+    }
+}
+
+@mixin backdrop($dialog) {
+    //Native
+    #{$dialog}::backdrop {
+        @content;
+    }
+
+    //Polyfill
+    #{$dialog}+.backdrop {
         @content;
     }
 }

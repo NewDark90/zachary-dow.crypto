@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BlockNames } from "./env";
 export namespace Components {
+    interface AcceptAnimationModal {
+    }
     interface AppRoot {
     }
     interface BlockchainBlock {
@@ -26,6 +28,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAcceptAnimationModalElement extends Components.AcceptAnimationModal, HTMLStencilElement {
+    }
+    var HTMLAcceptAnimationModalElement: {
+        prototype: HTMLAcceptAnimationModalElement;
+        new (): HTMLAcceptAnimationModalElement;
+    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
@@ -63,6 +71,7 @@ declare global {
         new (): HTMLNavigationMenuElement;
     };
     interface HTMLElementTagNameMap {
+        "accept-animation-modal": HTMLAcceptAnimationModalElement;
         "app-root": HTMLAppRootElement;
         "blockchain-block": HTMLBlockchainBlockElement;
         "blockchain-display": HTMLBlockchainDisplayElement;
@@ -72,6 +81,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AcceptAnimationModal {
+        "onAcceptAnimationModal-test"?: (event: CustomEvent<{}>) => void;
+    }
     interface AppRoot {
     }
     interface BlockchainBlock {
@@ -90,6 +102,7 @@ declare namespace LocalJSX {
     interface NavigationMenu {
     }
     interface IntrinsicElements {
+        "accept-animation-modal": AcceptAnimationModal;
         "app-root": AppRoot;
         "blockchain-block": BlockchainBlock;
         "blockchain-display": BlockchainDisplay;
@@ -102,6 +115,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "accept-animation-modal": LocalJSX.AcceptAnimationModal & JSXBase.HTMLAttributes<HTMLAcceptAnimationModalElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "blockchain-block": LocalJSX.BlockchainBlock & JSXBase.HTMLAttributes<HTMLBlockchainBlockElement>;
             "blockchain-display": LocalJSX.BlockchainDisplay & JSXBase.HTMLAttributes<HTMLBlockchainDisplayElement>;
