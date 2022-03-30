@@ -82,7 +82,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AcceptAnimationModal {
-        "onAcceptAnimationModal-test"?: (event: CustomEvent<{}>) => void;
+        "onAcceptAnimationModal-showAnimations"?: (event: CustomEvent<{ choice: boolean }>) => void;
     }
     interface AppRoot {
     }
@@ -98,6 +98,7 @@ declare namespace LocalJSX {
     interface CodeCube {
         "animation"?: "animate" | "idle";
         "idleCube"?: boolean;
+        "onCodeCube-lockedIn"?: (event: CustomEvent<AnimationEvent>) => void;
     }
     interface NavigationMenu {
     }

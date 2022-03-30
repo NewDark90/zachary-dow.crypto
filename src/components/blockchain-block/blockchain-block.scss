@@ -1,10 +1,13 @@
 @use "../../styles";
 
+.hide {
+    display: none;
+}
+
 :host {
     position: relative;
     box-sizing: border-box;
     white-space: normal;
-    border: 2px dashed styles.$secondary-green;
     text-align: center;
     display: block;
 
@@ -13,6 +16,17 @@
     margin: ((100vh - styles.$blockchain-block-height) * 0.5) auto;
 
     scroll-snap-align: start;
+
+    .content-wrapper {
+        height: 100%;
+        width: 100%;
+        color: styles.$primary-black;
+        background-color: styles.$primary-white;
+
+        border: 2px solid styles.$secondary-green;
+        border-radius: 1rem;
+        box-shadow: 3px 6px rgba(styles.$secondary-green, 1);
+    }
 
     &:first-of-type {
         margin-top: 10vh;

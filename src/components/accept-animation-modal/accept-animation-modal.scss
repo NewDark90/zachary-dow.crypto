@@ -3,7 +3,6 @@
 
 accept-animation-modal {
     text-align: center;
-    display: block;
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -12,6 +11,13 @@ accept-animation-modal {
     z-index: 2000;
 
     background-color: rgba(styles.$primary-gray, 0.7);
+
+    &[show-dialog] {
+        display: block;
+    }
+    &:not([show-dialog]) {
+        display: none;
+    }
 
     .title {
         width: 100%;
@@ -47,7 +53,7 @@ accept-animation-modal {
         font-size: 5rem;
         border-radius: 1rem;
         border: 8px solid;
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0);
         width: 80%;
         padding: 1rem;
         font-weight: bold;
@@ -60,6 +66,7 @@ accept-animation-modal {
         &.yes {
             color: styles.$secondary-green;
             border-color: styles.$secondary-green;
+
             &:hover {
                 //color: color.adjust(styles.$primary-green, $lightness: 40%);
                 border-color: color.adjust(styles.$primary-green, $lightness: 40%);

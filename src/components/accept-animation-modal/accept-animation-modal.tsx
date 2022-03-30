@@ -1,4 +1,4 @@
-import { Component, Host, h, ComponentInterface, Element, Event, EventEmitter } from "@stencil/core";
+import { Component, Host, h, ComponentInterface, Element, Event, EventEmitter, State } from "@stencil/core";
 
 /** 
  * Don't create a stacking context. z-index/position/etc. Attach directly into body.
@@ -14,39 +14,43 @@ export class AcceptAnimationModal implements ComponentInterface
 {
     @Element() hostElement: HTMLElement;
 
+    @State() show: boolean = true;
+
     @Event({
-        eventName: 'acceptAnimationModal-test',
+        eventName: 'acceptAnimationModal-showAnimations',
         composed: true,
         cancelable: false,
         bubbles: true,
-      }) testEvent: EventEmitter<{}>;
+    }) 
+    choiceEmitter: EventEmitter<{ choice: boolean }>;
 
     componentDidLoad()
     {
 
     }
 
-    choice(_choice: boolean)
+    showAnimationSelect(choice: boolean)
     {
-
+        this.choiceEmitter.emit({ choice: choice });
+        this.show = false;
     }
 
     render()
     {
         return (
-            <Host>
+            <Host show-dialog={ this.show }>
                 <div class="dialog">
                     <div class="title">
                         Show Animations?
                     </div>
-                    {/*<div class="disclaimer"></div>*/}
+                    {/*<div class="disclaimer"></div>*/ }
                     <div class="button-wrap">
-                        <button class="choice no" value="0" onClick={() => this.choice(false)}>
+                        <button class="choice no" value="0" onClick={ () => this.showAnimationSelect(false) }>
                             0
                         </button>
                     </div>
                     <div class="button-wrap">
-                        <button class="choice yes" value="1" onClick={() => this.choice(true)}>
+                        <button class="choice yes" value="1" onClick={ () => this.showAnimationSelect(true) }>
                             1
                         </button>
                     </div>

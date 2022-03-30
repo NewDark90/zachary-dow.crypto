@@ -27,14 +27,9 @@ $bg-opacity: 0.7;
     height: $box-depth;
 }
 
-@mixin animation-common {
-    animation-delay: 0s;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-timing-function: linear;
+.hide {
+    display: none;
 }
-
 
 :host {
     display: block;
@@ -121,12 +116,23 @@ $bg-opacity: 0.7;
     }
 }
 
+$standard-duration: 6s;
+
+@mixin animation-common {
+    animation-delay: 0s;
+    animation-duration: $standard-duration;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+
 :host(.idle)
 {
     .cube {
         display: block;
         animation-name: idleSpin;
         @include animation-common;
+        animation-iteration-count: infinite;
         animation-duration: 10s;
     }
 }
@@ -140,16 +146,18 @@ $bg-opacity: 0.7;
         display: block;
         animation-name: spinToPosition;
         @include animation-common;
+        animation-fill-mode: forwards;
     }
 
     .content-cover {
         animation: contentCoverReveal;
         @include animation-common;
+        animation-duration: $standard-duration + 1s;
     }
 }
 
-$x-inc: 180deg;
-$y-inc: 180deg;
+$x-inc: 90deg;
+$y-inc: 90deg;
 
 /*
 @keyframes spinToPosition {
@@ -196,8 +204,12 @@ $y-inc: 180deg;
     36% {
         transform: translateZ($box-depth * -3) rotateY($y-inc * 3) rotateX($x-inc * 3);
     }
-    60%, 100% {
+    60%, 99% {
         transform: translateZ($box-depth * -1) rotateY($y-inc * 4) rotateX($x-inc * 4);
+    }
+    100% {
+        transform: translateZ($box-depth * -1) rotateY($y-inc * 4) rotateX($x-inc * 4);
+        visibility: hidden;
     }
 }
 
@@ -218,13 +230,19 @@ $y-inc: 180deg;
 
 @keyframes contentCoverReveal {
 
-    0%, 79% {
+    0%, 80% {
         background-color: rgba(styles.$secondary-green, 0);
     }
-    90% {
+    88% {
         background-color: rgba(styles.$secondary-green, 1);
     }
-    100% {
+    94% {
         background-color: rgba(255,255,255, 1);
+    }
+    99% {
+        background-color: rgba(255,255,255, 0);
+    } 
+    100% {
+        visibility: none;
     }
 }

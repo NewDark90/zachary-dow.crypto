@@ -12,6 +12,7 @@ export class AppRoot implements ComponentInterface
     {
         return (
             <Host>
+                <accept-animation-modal></accept-animation-modal>
                 <header>
                     <navigation-menu></navigation-menu>
                 </header>
@@ -19,7 +20,6 @@ export class AppRoot implements ComponentInterface
                 <main>
                     <blockchain-display></blockchain-display>
                 </main>
-                <accept-animation-modal onAcceptAnimationModal-test={(e) => { return console.log("test", e.detail); }}></accept-animation-modal>
             </Host>
         );
     }
