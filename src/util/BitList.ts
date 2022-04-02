@@ -1,6 +1,6 @@
 import { randomInt, shuffle } from "../util"
 
-const rareEmojis = [ "✊", "🤝", "🌎", "🌹", "🕊", "⛓", "❤️", "🖤", "💚", "☮️", "🟥", "⬛️", "🌲", "🏴", "☭" ];
+const rareEmojis = [ "✊", "🤝", "🌎", "🌹", "🕊", "⛓", "⛓️", "❤️", "🖤", "💚", "☮️", "🟥", "⬛️", "🌲", "🏴", "☭" ];
 const emojiRarity = 80;
 
 export interface BitListState {
@@ -8,7 +8,7 @@ export interface BitListState {
     skip: number;
 };
 
-export class BitList 
+export class BitList
 {
     private readonly list: string[];
 
@@ -18,22 +18,22 @@ export class BitList
     ) {
         this.list = Array.from(
             new Array(emojis.length * emojiRarity),
-            (_v: undefined, i: number) => { return `${i % 2}`; } 
+            (_v: undefined, i: number) => { return `${i % 2}`; }
         );
         this.list.push(...rareEmojis);
         shuffle(this.list);
         Object.freeze(this.list);
     }
 
-    newState(): BitListState 
+    newState(): BitListState
     {
        return {
             index: randomInt(0, this.list.length),
-            skip: randomInt(0, this.list.length), 
+            skip: randomInt(0, this.list.length),
        };
     }
 
-    getBit(state: BitListState): string 
+    getBit(state: BitListState): string
     {
         state.index += state.skip;
         state.index = state.index % this.list.length;

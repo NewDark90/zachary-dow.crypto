@@ -1,5 +1,6 @@
-import { Component, Host, h, Prop, ComponentInterface, State, Listen, Element,Watch } from "@stencil/core";
-import { BlockNames } from "../../env";
+import { Component, Host, h, Prop, ComponentInterface, State, Listen, Element } from "@stencil/core";
+import { SectionConfig } from "../../env";
+import { CodeCubeAnimationCompleteState } from "../code-cube/shared";
 
 @Component({
     tag: "blockchain-block",
@@ -8,49 +9,36 @@ import { BlockNames } from "../../env";
 })
 export class BlockchainBlock implements ComponentInterface
 {
-    private isInFrameObserver = new IntersectionObserver(([entry]) => { this.isInFrame = entry.isIntersecting; }, { root: null, threshold: 1, });
+    private isFullyInFrameObserver = new IntersectionObserver(([entry]) => { this.isInFrame = entry.isIntersecting; this.calculateAnimationState(); }, { root: null, threshold: 1, });
+    private isBarelyInFrameObserver = new IntersectionObserver(([entry]) => { this.isBarelyInFrame = entry.isIntersecting; this.calculateAnimationState(); }, { root: null, threshold: 0.1, });
 
     @Element() hostElement: HTMLElement;
 
-    @Prop() blockName: BlockNames;
+    @Prop() sectionConfig: SectionConfig;
     @Prop() position: "left" | "right";
 
     @State() showAnimation: boolean = false;
-    @State() showContent: boolean = false;
+    @State() codeCubeAnimationState: CodeCubeAnimationCompleteState = {};
     @State() isInFrame: boolean = false;
+    @State() isBarelyInFrame: boolean = false;
     @State() animation?: "idle" | "animate";
 
     @Listen("acceptAnimationModal-showAnimations", { target: "document" })
-    animationChoiceListener(event: CustomEvent<{ choice: boolean }>) 
+    animationChoiceListener(event: CustomEvent<{ choice: boolean }>)
     {
-        console.log(event);
         this.showAnimation = event.detail.choice;
-        this.animation = "idle";
         this.calculateAnimationState();
     }
 
-    @Listen("animationend", { })
-    animationEndListener(e: AnimationEvent) 
-    {  
-        console.log(e);
-        if (e.animationName === "lockIn")
-            this.showContent = true;
+    componentWillLoad()
+    {
+        this.isFullyInFrameObserver.observe(this.hostElement);
+        this.isBarelyInFrameObserver.observe(this.hostElement);
     }
 
-    @Watch("isInFrame")
-    isInFrameWatch()  { this.calculateAnimationState(); }
-
-    @Watch("showAnimation")
-    showAnimationWatch() { this.calculateAnimationState(); }
-
-    componentWillLoad() 
+    calculateAnimationState()
     {
-        this.isInFrameObserver.observe(this.hostElement);
-    }
-
-    calculateAnimationState() 
-    {
-        if (!this.showAnimation) 
+        if (!this.showAnimation)
         {
             this.animation = undefined;
             return;
@@ -58,20 +46,24 @@ export class BlockchainBlock implements ComponentInterface
 
         if (this.isInFrame)
             this.animation = "animate";
+        if (this.isBarelyInFrame && this.animation != "animate")
+            this.animation = "idle";
     }
 
     render()
     {
         return (
             <Host>
-                <code-cube 
-                    animation={ this.animation } 
-                    class={{ "hide": this.showContent }}
-                    onCodeCube-lockedIn={(_e) => { this.showContent = true; }}
+                <code-cube
+                    animation={ this.animation }
+                    class={{ "hide": this.codeCubeAnimationState.contentCoverReveal }}
+                    onCodeCube-animationComplete={(e) => {
+                        this.codeCubeAnimationState = e.detail;
+                    }}
                     ></code-cube>
                 <div class={{
-                    "content-wrapper": true, 
-                    "hide": !this.showContent
+                    "content-wrapper": true,
+                    "hide": !this.codeCubeAnimationState.lockIn
                     }}>
                     <slot></slot>
                 </div>

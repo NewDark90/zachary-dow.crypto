@@ -5,15 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BlockNames } from "./env";
+import { SectionConfig } from "./env";
+import { CodeCubeAnimationCompleteState } from "./components/code-cube/shared";
 export namespace Components {
     interface AcceptAnimationModal {
     }
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "blockName": BlockNames;
         "position": "left" | "right";
+        "sectionConfig": SectionConfig;
     }
     interface BlockchainDisplay {
     }
@@ -87,8 +88,8 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "blockName"?: BlockNames;
         "position"?: "left" | "right";
+        "sectionConfig"?: SectionConfig;
     }
     interface BlockchainDisplay {
     }
@@ -98,7 +99,7 @@ declare namespace LocalJSX {
     interface CodeCube {
         "animation"?: "animate" | "idle";
         "idleCube"?: boolean;
-        "onCodeCube-lockedIn"?: (event: CustomEvent<AnimationEvent>) => void;
+        "onCodeCube-animationComplete"?: (event: CustomEvent<CodeCubeAnimationCompleteState>) => void;
     }
     interface NavigationMenu {
     }

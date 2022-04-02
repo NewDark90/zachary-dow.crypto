@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
-import { blockNames } from "../../env";
+import { sectionConfigs } from "../../env";
 
 @Component({
     tag: 'navigation-menu',
@@ -18,9 +18,9 @@ export class NavigationMenu
     {
         return (
             <Host>
-                {blockNames.map(name =>
-                    <a href={`#${name}`} onClick={(e) => this.goTo(e, name)}>
-                        {name}
+                {sectionConfigs.map(section =>
+                    <a href={`#${section.name}`} onClick={(e) => this.goTo(e, section.name)}>
+                        {section.name}
                     </a>
                 )}
             </Host>
