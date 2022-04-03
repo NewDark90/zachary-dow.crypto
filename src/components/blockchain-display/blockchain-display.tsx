@@ -9,6 +9,56 @@ import { insertBetween } from '../../util';
 })
 export class BlockchainDisplay implements ComponentInterface
 {
+    private getContent(key: string)
+    {
+        if (key == "home")
+        {
+            return (
+                <div class="block-content">
+                    <h1>
+                        Hi! My name is <span class="highlight">Zachary Dow</span>
+                        <br/>
+                        <span class="alias">
+                            also known as <span class="highlight">NewDark</span>.
+                        </span>
+                    </h1>
+                    <div>
+                        I am a...
+                        <ul class="iama">
+                            <li class="computer">
+                                Web Developer
+                            </li>
+                            <li class="chain">
+                                Web3 Enthusiast
+                            </li>
+                            <li class="fist">
+                                Humanitarian
+                            </li>
+                            <li class="tree">
+                                Environmentalist
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            );
+        }
+        else if (key == "about")
+        {
+            return <div class="block-content">About</div>;
+        }
+        else if (key == "contact")
+        {
+            return <div class="block-content">Contact</div>;
+        }
+        else if (key == "skills")
+        {
+            return <div class="block-content">Skills</div>;
+        }
+        else if (key == "wallets")
+        {
+            return <div class="block-content">Wallets</div>;
+        }
+    }
 
     render()
     {
@@ -19,11 +69,11 @@ export class BlockchainDisplay implements ComponentInterface
                         sectionConfigs.map(config => {
                             return (
                                 <blockchain-block section-config={config}>
-                                    {config.content}
+                                    {this.getContent(config.name)}
                                 </blockchain-block>
                             )
                         }),
-                        <div class="chain">"Chain"</div>
+                        (i) => <div class="chain">"Chain" {i}</div>
                     )
 
                 }

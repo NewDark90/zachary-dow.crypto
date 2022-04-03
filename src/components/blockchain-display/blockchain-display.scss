@@ -1,7 +1,60 @@
+
+@use "../../styles";
+
 :host {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     white-space: nowrap;
     width: auto;
+}
+
+
+.block-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+
+
+    ul {
+        text-align: left;
+        list-style-type: none;
+
+        &.iama {
+            font-size: 2.5rem;
+        }
+
+        li {
+            margin: 1rem 0;
+
+            &::before {
+                text-align: center;
+                display: inline-block;
+                width: 50px;
+                margin: 0 1rem;
+            }
+        }
+
+        li.computer::before { content: "💻"; }
+        li.chain::before { content: "⛓️"; }
+        li.fist::before { content: "✊"; }
+        li.tree::before { content: "🌲"; }
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .alias {
+        width: 100%;
+        font-size: 1.5rem;
+        text-align: right;
+    }
+
+    .highlight {
+        color: styles.$primary-red;
+        font-weight: bold;
+    }
 }

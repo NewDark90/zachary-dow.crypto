@@ -61,7 +61,9 @@ export class CodeCube
                     [this.animation]: this.animation ? true : false,
                 }}
                 >
-                <div class={{"cube": true, "hide": this.animationComplete.lockIn  }}>
+                <div class={{"cube": true, "hide": this.animationComplete.lockIn  }}
+                    onAnimationEnd={(e) => this.animationEndListener(e as AnimationEvent & { animationName: KeyframeNames })}
+                    >
                     <div class="face front">
                         {this.getBitElements()}
                     </div>
@@ -81,7 +83,9 @@ export class CodeCube
                         {this.getBitElements()}
                     </div>
                 </div>
-                <div class={{"content-cover": true, "hide": this.animationComplete.contentCoverReveal}}></div>
+                <div class={{"content-cover": true, "hide": this.animationComplete.contentCoverReveal}}
+                    onAnimationEnd={(e) => this.animationEndListener(e as AnimationEvent & { animationName: KeyframeNames })}>
+                </div>
             </Host>
         );
     }

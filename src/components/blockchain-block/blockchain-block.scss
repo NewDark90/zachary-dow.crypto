@@ -1,7 +1,7 @@
 @use "../../styles";
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 :host {
@@ -44,4 +44,5 @@
     &:last-of-type {
         margin-bottom: 10vh;
     }
+
 }

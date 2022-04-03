@@ -1,12 +1,3 @@
-/*
-    While I found it easier to encapsulate the logic of this element on it's own, I don't think it needs to have the styles injected in every shadow dom element.
-    I'm already mildly bloating the dom and event cycle with many listeners, so let's not exacerbate issues.
-
-    Find styles @ code-cube.scss
-
-    (maybe), commiting to this file for now >.>
-*/
-
 @use "../../styles";
 
 $baseDuration: 2.5s;
