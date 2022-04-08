@@ -68,12 +68,12 @@ export class BlockchainDisplay implements ComponentInterface
                     insertBetween(
                         sectionConfigs.map(config => {
                             return (
-                                <blockchain-block section-config={config}>
+                                <blockchain-block section-name={config.name} section-config={config}>
                                     {this.getContent(config.name)}
                                 </blockchain-block>
                             )
                         }),
-                        (i) => <div class="chain">"Chain" {i}</div>
+                        (i) => <blockchain-links class={`links-${i}`}></blockchain-links>
                     )
 
                 }

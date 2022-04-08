@@ -1,0 +1,21 @@
+@use "../../styles";
+
+:host 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    user-select: none;
+    cursor: default;
+
+    height: (100vh - styles.$blockchain-block-height);
+    width: 100%;
+    font-size: 3rem;
+
+    .center-break {
+        text-align: center;
+        color: styles.$secondary-green 
+    }
+}

@@ -17,6 +17,7 @@ body {
     font-family: "Consolas", "Lucida Console", "Courier", monospace;
     color: palette.$primary-white;
     background: palette.$primary-black url("../assets/stardust-green.png") center center repeat;
+    background-attachment: fixed;
     scroll-behavior: smooth;
 }
 

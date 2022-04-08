@@ -18,7 +18,7 @@
 
     width: styles.$blockchain-block-width;
     height: styles.$blockchain-block-height;
-    margin: ((100vh - styles.$blockchain-block-height) * 0.5) auto;
+    margin: 0 auto;
 
     scroll-snap-align: start;
 
@@ -36,13 +36,4 @@
         border: 2px solid styles.$secondary-green;
         border-radius: 0.5rem;
     }
-
-    &:first-of-type {
-        margin-top: 10vh;
-    }
-
-    &:last-of-type {
-        margin-bottom: 10vh;
-    }
-
 }

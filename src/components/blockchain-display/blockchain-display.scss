@@ -7,6 +7,14 @@
     flex-direction: column;
     white-space: nowrap;
     width: auto;
+
+    blockchain-block:first-of-type {
+        margin-top: ((100vh - styles.$blockchain-block-height) * 0.5);
+    }
+
+    blockchain-block:last-of-type {
+        margin-bottom: ((100vh - styles.$blockchain-block-height) * 0.5);
+    }
 }
 
 

@@ -18,6 +18,8 @@ export namespace Components {
     }
     interface BlockchainDisplay {
     }
+    interface BlockchainLinks {
+    }
     interface CodeBit {
         "animation": "animate" | "idle" | undefined;
     }
@@ -53,6 +55,12 @@ declare global {
         prototype: HTMLBlockchainDisplayElement;
         new (): HTMLBlockchainDisplayElement;
     };
+    interface HTMLBlockchainLinksElement extends Components.BlockchainLinks, HTMLStencilElement {
+    }
+    var HTMLBlockchainLinksElement: {
+        prototype: HTMLBlockchainLinksElement;
+        new (): HTMLBlockchainLinksElement;
+    };
     interface HTMLCodeBitElement extends Components.CodeBit, HTMLStencilElement {
     }
     var HTMLCodeBitElement: {
@@ -76,6 +84,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "blockchain-block": HTMLBlockchainBlockElement;
         "blockchain-display": HTMLBlockchainDisplayElement;
+        "blockchain-links": HTMLBlockchainLinksElement;
         "code-bit": HTMLCodeBitElement;
         "code-cube": HTMLCodeCubeElement;
         "navigation-menu": HTMLNavigationMenuElement;
@@ -93,6 +102,8 @@ declare namespace LocalJSX {
     }
     interface BlockchainDisplay {
     }
+    interface BlockchainLinks {
+    }
     interface CodeBit {
         "animation"?: "animate" | "idle" | undefined;
     }
@@ -108,6 +119,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "blockchain-block": BlockchainBlock;
         "blockchain-display": BlockchainDisplay;
+        "blockchain-links": BlockchainLinks;
         "code-bit": CodeBit;
         "code-cube": CodeCube;
         "navigation-menu": NavigationMenu;
@@ -121,6 +133,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "blockchain-block": LocalJSX.BlockchainBlock & JSXBase.HTMLAttributes<HTMLBlockchainBlockElement>;
             "blockchain-display": LocalJSX.BlockchainDisplay & JSXBase.HTMLAttributes<HTMLBlockchainDisplayElement>;
+            "blockchain-links": LocalJSX.BlockchainLinks & JSXBase.HTMLAttributes<HTMLBlockchainLinksElement>;
             "code-bit": LocalJSX.CodeBit & JSXBase.HTMLAttributes<HTMLCodeBitElement>;
             "code-cube": LocalJSX.CodeCube & JSXBase.HTMLAttributes<HTMLCodeCubeElement>;
             "navigation-menu": LocalJSX.NavigationMenu & JSXBase.HTMLAttributes<HTMLNavigationMenuElement>;

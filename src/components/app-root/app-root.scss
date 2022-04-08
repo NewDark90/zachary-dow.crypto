@@ -7,10 +7,11 @@
     header {
         background-color: styles.$primary-black;
         position: fixed;
-        top: 0;
-        width: 100%;
+        left: 0;
+        margin: 0 1.5vw;
+        width: styles.$header-size;
+        height: 100%;
         box-sizing: border-box;
-        height: styles.$header-size;
         z-index: 1000;
 
         .title {
