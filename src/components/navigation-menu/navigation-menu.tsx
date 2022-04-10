@@ -1,19 +1,40 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, EventEmitter, Event, Listen, State, ComponentInterface } from '@stencil/core';
 import { sectionConfigs } from "../../env";
+import { BlockchainBlockFrameIntersectDetail } from '../blockchain-block/shared';
 
 @Component({
     tag: 'navigation-menu',
     styleUrl: 'navigation-menu.scss',
     shadow: true,
 })
-export class NavigationMenu
+export class NavigationMenu implements ComponentInterface
 {
-    private goTo(e: Event, blockName: string): void
+    @State() viewingSection?: string;
+
+    @Event({
+        eventName: "navigationMenu-goTo",
+        bubbles: true,
+        composed: true
+    })
+    goToEmitter: EventEmitter<{sectionName: string}> 
+
+    @Listen("blockchainBlock-frameIntersect", { target: "document" })
+    blockIntersectionListener(event: CustomEvent<BlockchainBlockFrameIntersectDetail>) 
     {
-        e.preventDefault();
-        history.replaceState(undefined, undefined, `#${blockName}`);
-        const block = document.body.querySelector(`[section-name='${blockName}']`)
-        window.moveTo(0, block.clientTop);
+        if (event.detail.isInFrame)
+        {
+            this.viewingSection = event.detail.sectionName;
+        }
+    }
+
+    componentWillLoad()
+    {
+
+    }
+
+    private goTo(sectionName: string): void
+    {
+        this.goToEmitter.emit({sectionName: sectionName});
     }
 
     render()
@@ -21,7 +42,12 @@ export class NavigationMenu
         return (
             <Host>
                 {sectionConfigs.map(section => 
-                    <a href={`#${section.name}`} onClick={(e) => this.goTo(e, section.name)}>
+                    <a href={`#${section.name}`} 
+                        onClick={(e) => {
+                            e.preventDefault(); this.goTo(section.name)
+                        }}
+                        class={{"in-view": this.viewingSection === section.name}}
+                        >
                         <span class="menu-icon" innerHTML={section.icon}></span> 
                         {section.name} 
                     </a>

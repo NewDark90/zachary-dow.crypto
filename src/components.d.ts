@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { SectionConfig } from "./env";
+import { IconLink } from "./env";
+import { BlockchainBlockFrameIntersectDetail } from "./components/blockchain-block/shared";
 import { CodeCubeAnimationCompleteState } from "./components/code-cube/shared";
 export namespace Components {
     interface AcceptAnimationModal {
@@ -13,8 +14,7 @@ export namespace Components {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "position": "left" | "right";
-        "sectionConfig": SectionConfig;
+        "sectionConfig": IconLink;
     }
     interface BlockchainDisplay {
     }
@@ -97,8 +97,8 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "position"?: "left" | "right";
-        "sectionConfig"?: SectionConfig;
+        "onBlockchainBlock-frameIntersect"?: (event: CustomEvent<BlockchainBlockFrameIntersectDetail>) => void;
+        "sectionConfig"?: IconLink;
     }
     interface BlockchainDisplay {
     }
@@ -113,6 +113,7 @@ declare namespace LocalJSX {
         "onCodeCube-animationComplete"?: (event: CustomEvent<CodeCubeAnimationCompleteState>) => void;
     }
     interface NavigationMenu {
+        "onNavigationMenu-goTo"?: (event: CustomEvent<{sectionName: string}>) => void;
     }
     interface IntrinsicElements {
         "accept-animation-modal": AcceptAnimationModal;

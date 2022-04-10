@@ -18,12 +18,19 @@
 }
 
 
-.block-content {
+.block-content 
+{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     height: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+
+    .i {
+        font-style: italic;
+    }
 
 
     ul {
@@ -64,5 +71,25 @@
     .highlight {
         color: styles.$primary-red;
         font-weight: bold;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    &.block-home {
+        
+    }
+    &.block-about {
+        font-size: 1.5rem;
+    }
+    &.block-skills {
+        
+    }
+    &.block-contact {
+        
+    }
+    &.block-wallets {
+
     }
 }

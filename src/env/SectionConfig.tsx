@@ -3,14 +3,11 @@ import aboutIcon from "../../node_modules/ionicons/dist/svg/person-outline.svg";
 import contactIcon from "../../node_modules/ionicons/dist/svg/chatbubbles-outline.svg";
 import skillsIcon from "../../node_modules/ionicons/dist/svg/construct-outline.svg";
 import walletIcon from "../../node_modules/ionicons/dist/svg/wallet-outline.svg";
+import { parseBase64Data } from "../util";
+import { IconLink } from ".";
 
-export interface SectionConfig
-{
-    name: string;
-    icon: string;
-}
 
-export const sectionConfigs: SectionConfig[] = [
+export const sectionConfigs: IconLink[] = [
     {
         name: "home",
         icon: homeIcon,
@@ -33,7 +30,7 @@ export const sectionConfigs: SectionConfig[] = [
     }
 ];
 sectionConfigs.forEach((config) => {
-    config.icon = window.atob(config.icon.split(/,/)[1]);
+    config.icon = parseBase64Data(config.icon);
 
     if (config.name === "wallets") 
     {

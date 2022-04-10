@@ -22,6 +22,10 @@
         text-align: center;
         color: styles.$secondary-green;
 
+        &.in-view {
+            color: styles.$primary-white;
+        }
+
         @include styles.hover-active {
             color: styles.$primary-red;
             svg {
@@ -35,5 +39,9 @@
         width: (64px - (8px * 2));
         height:  64px;
         color: styles.$secondary-green;
+    }
+
+    .in-view svg {
+        color: styles.$primary-white;
     }
 }
