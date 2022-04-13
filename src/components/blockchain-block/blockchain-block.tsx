@@ -10,6 +10,8 @@ import { CodeCubeAnimationCompleteState } from "../code-cube/shared";
 })
 export class BlockchainBlock implements ComponentInterface
 {
+    private isLoaded = false;
+
     private isFullyInFrameObserver = new IntersectionObserver(([entry]) => { 
         this.isInFrame = entry.isIntersecting; 
         this.calculateIntersectionState(); 
@@ -43,7 +45,6 @@ export class BlockchainBlock implements ComponentInterface
     @Listen("navigationMenu-goTo", { target: "document" })
     navigationGoToListener(event: CustomEvent<{sectionName: string}>) 
     {
-        console.log(event);
         if (event.detail.sectionName == this.sectionConfig.name)
             this.scrollToSelf();
     }
@@ -52,17 +53,25 @@ export class BlockchainBlock implements ComponentInterface
         this.hostElement.scrollIntoView({ block: "center" });
     }
 
-    componentDidLoad()
+    componentWillLoad()
     {
-        if (window.location.hash === `#${this.sectionConfig.name}`)
-            this.scrollToSelf();
-
         this.isFullyInFrameObserver.observe(this.hostElement);
         this.isBarelyInFrameObserver.observe(this.hostElement);
     }
 
+    componentDidLoad()
+    {
+        if (window.location.hash === `#${this.sectionConfig.name}`)
+            this.scrollToSelf();
+        
+        this.isLoaded = true;
+    }
+
     calculateIntersectionState()
     {
+        if (!this.isLoaded)
+            return;
+
         this.frameIntersectEmitter.emit({
             sectionName: this.sectionConfig.name,
             isInFrame: this.isInFrame,

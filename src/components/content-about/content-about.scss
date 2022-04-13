@@ -1,3 +1,16 @@
-:host {
-    display: block;
+@use "../../styles";
+
+@include styles.content-common;
+
+:host 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    p {
+        font-size: 1.5rem;
+        text-align: left;
+    }
 }

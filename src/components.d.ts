@@ -27,6 +27,16 @@ export namespace Components {
         "animation"?: "animate" | "idle";
         "idleCube": boolean;
     }
+    interface ContentAbout {
+    }
+    interface ContentContact {
+    }
+    interface ContentHome {
+    }
+    interface ContentSkills {
+    }
+    interface ContentWallets {
+    }
     interface NavigationMenu {
     }
 }
@@ -73,6 +83,36 @@ declare global {
         prototype: HTMLCodeCubeElement;
         new (): HTMLCodeCubeElement;
     };
+    interface HTMLContentAboutElement extends Components.ContentAbout, HTMLStencilElement {
+    }
+    var HTMLContentAboutElement: {
+        prototype: HTMLContentAboutElement;
+        new (): HTMLContentAboutElement;
+    };
+    interface HTMLContentContactElement extends Components.ContentContact, HTMLStencilElement {
+    }
+    var HTMLContentContactElement: {
+        prototype: HTMLContentContactElement;
+        new (): HTMLContentContactElement;
+    };
+    interface HTMLContentHomeElement extends Components.ContentHome, HTMLStencilElement {
+    }
+    var HTMLContentHomeElement: {
+        prototype: HTMLContentHomeElement;
+        new (): HTMLContentHomeElement;
+    };
+    interface HTMLContentSkillsElement extends Components.ContentSkills, HTMLStencilElement {
+    }
+    var HTMLContentSkillsElement: {
+        prototype: HTMLContentSkillsElement;
+        new (): HTMLContentSkillsElement;
+    };
+    interface HTMLContentWalletsElement extends Components.ContentWallets, HTMLStencilElement {
+    }
+    var HTMLContentWalletsElement: {
+        prototype: HTMLContentWalletsElement;
+        new (): HTMLContentWalletsElement;
+    };
     interface HTMLNavigationMenuElement extends Components.NavigationMenu, HTMLStencilElement {
     }
     var HTMLNavigationMenuElement: {
@@ -87,6 +127,11 @@ declare global {
         "blockchain-links": HTMLBlockchainLinksElement;
         "code-bit": HTMLCodeBitElement;
         "code-cube": HTMLCodeCubeElement;
+        "content-about": HTMLContentAboutElement;
+        "content-contact": HTMLContentContactElement;
+        "content-home": HTMLContentHomeElement;
+        "content-skills": HTMLContentSkillsElement;
+        "content-wallets": HTMLContentWalletsElement;
         "navigation-menu": HTMLNavigationMenuElement;
     }
 }
@@ -112,6 +157,16 @@ declare namespace LocalJSX {
         "idleCube"?: boolean;
         "onCodeCube-animationComplete"?: (event: CustomEvent<CodeCubeAnimationCompleteState>) => void;
     }
+    interface ContentAbout {
+    }
+    interface ContentContact {
+    }
+    interface ContentHome {
+    }
+    interface ContentSkills {
+    }
+    interface ContentWallets {
+    }
     interface NavigationMenu {
         "onNavigationMenu-goTo"?: (event: CustomEvent<{sectionName: string}>) => void;
     }
@@ -123,6 +178,11 @@ declare namespace LocalJSX {
         "blockchain-links": BlockchainLinks;
         "code-bit": CodeBit;
         "code-cube": CodeCube;
+        "content-about": ContentAbout;
+        "content-contact": ContentContact;
+        "content-home": ContentHome;
+        "content-skills": ContentSkills;
+        "content-wallets": ContentWallets;
         "navigation-menu": NavigationMenu;
     }
 }
@@ -137,6 +197,11 @@ declare module "@stencil/core" {
             "blockchain-links": LocalJSX.BlockchainLinks & JSXBase.HTMLAttributes<HTMLBlockchainLinksElement>;
             "code-bit": LocalJSX.CodeBit & JSXBase.HTMLAttributes<HTMLCodeBitElement>;
             "code-cube": LocalJSX.CodeCube & JSXBase.HTMLAttributes<HTMLCodeCubeElement>;
+            "content-about": LocalJSX.ContentAbout & JSXBase.HTMLAttributes<HTMLContentAboutElement>;
+            "content-contact": LocalJSX.ContentContact & JSXBase.HTMLAttributes<HTMLContentContactElement>;
+            "content-home": LocalJSX.ContentHome & JSXBase.HTMLAttributes<HTMLContentHomeElement>;
+            "content-skills": LocalJSX.ContentSkills & JSXBase.HTMLAttributes<HTMLContentSkillsElement>;
+            "content-wallets": LocalJSX.ContentWallets & JSXBase.HTMLAttributes<HTMLContentWalletsElement>;
             "navigation-menu": LocalJSX.NavigationMenu & JSXBase.HTMLAttributes<HTMLNavigationMenuElement>;
         }
     }

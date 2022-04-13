@@ -1,9 +1,8 @@
-import homeIcon from "../../node_modules/ionicons/dist/svg/home-outline.svg";
-import aboutIcon from "../../node_modules/ionicons/dist/svg/person-outline.svg";
-import contactIcon from "../../node_modules/ionicons/dist/svg/chatbubbles-outline.svg";
-import skillsIcon from "../../node_modules/ionicons/dist/svg/construct-outline.svg";
-import walletIcon from "../../node_modules/ionicons/dist/svg/wallet-outline.svg";
-import { parseBase64Data } from "../util";
+import homeIcon from "ionicons/dist/svg/home-outline.svg";
+import aboutIcon from "ionicons/dist/svg/person-outline.svg";
+import contactIcon from "ionicons/dist/svg/chatbubbles-outline.svg";
+import skillsIcon from "ionicons/dist/svg/construct-outline.svg";
+import walletIcon from "ionicons/dist/svg/wallet-outline.svg";
 import { IconLink } from ".";
 
 
@@ -30,7 +29,6 @@ export const sectionConfigs: IconLink[] = [
     }
 ];
 sectionConfigs.forEach((config) => {
-    config.icon = parseBase64Data(config.icon);
 
     if (config.name === "wallets") 
     {

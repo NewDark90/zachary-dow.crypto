@@ -1,3 +1,44 @@
+@use "../../styles";
+
+@include styles.content-common;
+
 :host {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    padding: 1rem;
+    
+    text-align: center;
+
+    a {
+        text-decoration: none;
+    }
+
+    section {
+        flex-basis: 50%;
+    }
+
+    .skillset-title {
+        margin: 0.5rem 0;
+    }
+
+    .skillset {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .skill {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+        margin: 0.5rem;
+        border-radius: 8px;
+        border: 2px solid styles.$primary-black;
+        flex-shrink: 0;
+        color: styles.$primary-black;
+        background-color: styles.$primary-white;
+    }
 }

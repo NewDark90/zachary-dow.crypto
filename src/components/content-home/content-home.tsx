@@ -12,7 +12,30 @@ export class ContentHome implements ComponentInterface
     {
         return (
             <Host>
-                <slot></slot>
+                <h1>
+                    Hi! My name is <span class="highlight">Zachary Dow</span>
+                    <br/>
+                    <span class="alias">
+                        also known as <span class="highlight">NewDark</span>.
+                    </span>
+                </h1>
+                <div>
+                    I am a...
+                    <ul class="iama">
+                        <li class="computer">
+                            Developer
+                        </li>
+                        <li class="chain">
+                            Web3 Enthusiast
+                        </li>
+                        <li class="fist">
+                            Humanitarian
+                        </li>
+                        <li class="tree">
+                            Environmentalist
+                        </li>
+                    </ul>
+                </div>
             </Host>
         );
     }

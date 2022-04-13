@@ -1,5 +1,7 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
+import { inlineSvg } from 'stencil-inline-svg';
 
 // https://stenciljs.com/docs/config
 
@@ -15,7 +17,13 @@ export const config: Config = {
             baseUrl: 'https://myapp.local/',
         },
     ],
+    rollupPlugins: {
+        after: [
+            nodePolyfills()
+        ]
+    },
     plugins: [
-        sass()
+        sass(),
+        inlineSvg()
     ]
 };

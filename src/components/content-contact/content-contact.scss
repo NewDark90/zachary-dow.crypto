@@ -1,3 +1,54 @@
+@use "../../styles";
+
+@include styles.content-common; 
+
 :host {
-    display: block;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .contact-list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact {
+        a {
+            font-size: 1.5rem;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            color: styles.$secondary-green;
+
+            @include styles.hover-active {
+                color: styles.$primary-red;
+            }
+        }
+    }
+
+    .icon {
+        width: 100%;
+        max-width: 64px;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        border: 2px solid styles.$secondary-green;
+        background-color: styles.$primary-white;
+        
+        @include styles.hover-active {
+            border-color: styles.$primary-red;
+        }
+    }
+
+    .display {
+        margin: 0.5rem;
+    }
 }

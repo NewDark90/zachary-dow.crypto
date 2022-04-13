@@ -1,3 +1,47 @@
-:host {
-    display: block;
+@use "../../styles";
+
+@include styles.content-common;
+
+:host 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+    h1 {
+        font-size: 4rem;
+    }
+
+    .alias {
+        width: 100%;
+        font-size: 1.5rem;
+        text-align: right;
+    }
+
+    ul {
+        text-align: left;
+        list-style-type: none;
+
+        &.iama {
+            font-size: 2.5rem;
+        }
+
+        li {
+            margin: 1rem 0;
+
+            &::before {
+                text-align: center;
+                display: inline-block;
+                width: 50px;
+                margin: 0 1rem;
+            }
+        }
+
+        li.computer::before { content: "💻"; }
+        li.chain::before { content: "⛓️"; }
+        li.fist::before { content: "✊"; }
+        li.tree::before { content: "🌲"; }
+    }
+
 }
