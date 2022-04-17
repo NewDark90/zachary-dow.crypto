@@ -25,6 +25,7 @@
         "@stencil/router": "^1.0.1",
         "@stencil/sass": "^1.5.2",
         "@types/jest": "^27.0.3",
+        "@types/lodash": "^4.14.181",
         "cryptocurrency-icons": "^0.18.0",
         "ionicons": "^6.0.1",
         "jest": "^27.4.5",
@@ -32,11 +33,14 @@
         "puppeteer": "^13.5.1",
         "rollup-plugin-node-polyfills": "^0.2.1",
         "stencil-inline-svg": "^1.1.0",
-        "ts-node": "^10.7.0"
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.3"
     },
     "dependencies": {
         "@types/qrcode": "^1.4.2",
         "@unstoppabledomains/resolution": "^7.1.4",
+        "crypto-symbol": "^3.3.3",
+        "lodash": "^4.17.21",
         "qrcode": "^1.5.0",
         "simple-icons": "^6.18.0"
     }

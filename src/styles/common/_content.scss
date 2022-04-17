@@ -1,6 +1,6 @@
-@use "./palette";
+@use "../palette";
 
-@mixin content-common 
+@mixin common-content 
 {
     :host
     {
@@ -31,5 +31,4 @@
             }
         }
     }
-
 }

@@ -1,0 +1,22 @@
+@use "../palette";
+@use "../utility";
+
+@mixin common-links
+{
+    :host
+    {
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: palette.$secondary-green;
+
+            @include utility.hover-active {
+                color: palette.$primary-red;
+                svg {
+                    color: palette.$primary-red;
+                }
+            }
+
+        }
+    }
+}

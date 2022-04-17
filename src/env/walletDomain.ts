@@ -1,0 +1,1 @@
+export const walletDomain = "zachary-dow.wallet";

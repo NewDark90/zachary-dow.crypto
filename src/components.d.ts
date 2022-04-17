@@ -14,6 +14,7 @@ export namespace Components {
     interface AppRoot {
     }
     interface BlockchainBlock {
+        "observeFrame": boolean;
         "sectionConfig": IconLink;
     }
     interface BlockchainDisplay {
@@ -38,6 +39,10 @@ export namespace Components {
     interface ContentWallets {
     }
     interface NavigationMenu {
+    }
+    interface WalletAddressDisplay {
+        "currency": string;
+        "walletAddress": string;
     }
 }
 declare global {
@@ -119,6 +124,12 @@ declare global {
         prototype: HTMLNavigationMenuElement;
         new (): HTMLNavigationMenuElement;
     };
+    interface HTMLWalletAddressDisplayElement extends Components.WalletAddressDisplay, HTMLStencilElement {
+    }
+    var HTMLWalletAddressDisplayElement: {
+        prototype: HTMLWalletAddressDisplayElement;
+        new (): HTMLWalletAddressDisplayElement;
+    };
     interface HTMLElementTagNameMap {
         "accept-animation-modal": HTMLAcceptAnimationModalElement;
         "app-root": HTMLAppRootElement;
@@ -133,6 +144,7 @@ declare global {
         "content-skills": HTMLContentSkillsElement;
         "content-wallets": HTMLContentWalletsElement;
         "navigation-menu": HTMLNavigationMenuElement;
+        "wallet-address-display": HTMLWalletAddressDisplayElement;
     }
 }
 declare namespace LocalJSX {
@@ -142,6 +154,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface BlockchainBlock {
+        "observeFrame"?: boolean;
         "onBlockchainBlock-frameIntersect"?: (event: CustomEvent<BlockchainBlockFrameIntersectDetail>) => void;
         "sectionConfig"?: IconLink;
     }
@@ -170,6 +183,10 @@ declare namespace LocalJSX {
     interface NavigationMenu {
         "onNavigationMenu-goTo"?: (event: CustomEvent<{sectionName: string}>) => void;
     }
+    interface WalletAddressDisplay {
+        "currency"?: string;
+        "walletAddress"?: string;
+    }
     interface IntrinsicElements {
         "accept-animation-modal": AcceptAnimationModal;
         "app-root": AppRoot;
@@ -184,6 +201,7 @@ declare namespace LocalJSX {
         "content-skills": ContentSkills;
         "content-wallets": ContentWallets;
         "navigation-menu": NavigationMenu;
+        "wallet-address-display": WalletAddressDisplay;
     }
 }
 export { LocalJSX as JSX };
@@ -203,6 +221,7 @@ declare module "@stencil/core" {
             "content-skills": LocalJSX.ContentSkills & JSXBase.HTMLAttributes<HTMLContentSkillsElement>;
             "content-wallets": LocalJSX.ContentWallets & JSXBase.HTMLAttributes<HTMLContentWalletsElement>;
             "navigation-menu": LocalJSX.NavigationMenu & JSXBase.HTMLAttributes<HTMLNavigationMenuElement>;
+            "wallet-address-display": LocalJSX.WalletAddressDisplay & JSXBase.HTMLAttributes<HTMLWalletAddressDisplayElement>;
         }
     }
 }

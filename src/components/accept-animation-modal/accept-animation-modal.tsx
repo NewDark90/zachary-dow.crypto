@@ -1,4 +1,4 @@
-import { Component, Host, h, ComponentInterface, Element, Event, EventEmitter, State } from "@stencil/core";
+import { Component, Host, h, ComponentInterface, Event, EventEmitter, State } from "@stencil/core";
 
 /** 
  * Don't create a stacking context. z-index/position/etc. Attach directly into body.
@@ -12,8 +12,6 @@ import { Component, Host, h, ComponentInterface, Element, Event, EventEmitter, S
 })
 export class AcceptAnimationModal implements ComponentInterface
 {
-    @Element() hostElement: HTMLElement;
-
     @State() show: boolean = true;
 
     @Event({

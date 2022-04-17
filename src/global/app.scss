@@ -8,15 +8,15 @@
   Any global CSS variables should also be applied here.
 */
 
-@use "../styles/palette" as palette;
+@use "../styles";
 
 body {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: "Consolas", "Lucida Console", "Courier", monospace;
-    color: palette.$primary-white;
-    background: palette.$primary-black url("../assets/stardust-green.png") center center repeat;
+    color: styles.$primary-white;
+    background: styles.$primary-black url("../assets/stardust-green.png") center center repeat;
     background-attachment: fixed;
     scroll-behavior: smooth;
 }

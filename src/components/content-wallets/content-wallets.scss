@@ -1,3 +1,129 @@
-:host {
-    display: block;
+@use "../../styles";
+
+@include styles.common-content;
+@include styles.common-links;
+
+:host 
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+
+    .title {
+        margin: 0.5rem;
+    }
+    
+    .address-details {
+        background-color: styles.$primary-black;
+        position: absolute;
+        left: 0; 
+        top: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 2rem;
+        border-radius: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .address {
+            word-break: break-all;
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+
+            color: styles.$primary-red;
+            @include styles.hover-active 
+            {
+                color: styles.$primary-white;
+            }
+        }
+    }
+
+    .l2-list, .currency-list {
+        font-size: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    .icon-badge {
+        padding: 0.5rem;
+        margin: 0.5rem;
+        color: styles.$secondary-green;
+        border: 2px solid styles.$secondary-green;
+        border-radius: 8px;
+        background-color: styles.$primary-black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-badge:not(.l2)
+    {
+        @include styles.hover-active 
+        {
+            color: styles.$primary-red;
+            border-color: styles.$primary-red;
+        }
+    }
+
+
+    .icon, .icon-md, .icon-big {
+        margin: 0 auto;
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }    
+
+    .icon {
+        max-width: 32px;
+    }
+    .icon-md {
+        max-width: 64px;
+    }
+    .icon-big {
+        max-width: 128px;
+    }
+
+    .copy-button {
+        background-color: rgba(0,0,0,0);
+        border: 0;
+        margin: 0px 0.5rem;
+        svg {
+            color: styles.$secondary-green;
+            width: 24px;
+
+            @include styles.hover-active 
+            {
+                color: styles.$primary-red;
+            }
+        }
+    }
+
+    .display {
+        padding: 0.5rem;
+    }
+
+    .currency-list .icon {
+        display: inline-block;
+    }
+
+    .hide {
+        display: none;
+    }
+
 }

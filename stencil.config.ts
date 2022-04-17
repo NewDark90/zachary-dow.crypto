@@ -14,12 +14,18 @@ export const config: Config = {
             type: 'www',
             // comment the following line to disable service workers in production
             serviceWorker: null,
-            baseUrl: 'https://myapp.local/',
+            baseUrl: 'https://zachary-dow.crypto/',
+            copy: [
+                {
+                    src: '../node_modules/cryptocurrency-icons/svg/color/**/*.svg',
+                    dest: 'assets/cryptocurrency-icons/svg/color',
+                },
+            ]
         },
     ],
     rollupPlugins: {
         after: [
-            nodePolyfills()
+            nodePolyfills(),
         ]
     },
     plugins: [

@@ -1,0 +1,33 @@
+(() => {
+    const wallets = [
+        // { ticker: "ATOM", address: "cosmos199642e4ewvlnuz5tuk5g0c0kej0k08xrs06dfa" },
+        // { ticker: "CRO", address: "cro199642e4ewvlnuz5tuk5g0c0kej0k08xrg5j54v" },
+        // { ticker: "OSMO", address: "osmo199642e4ewvlnuz5tuk5g0c0kej0k08xrc5fal0" },
+        // { ticker: "SCRT", address: "secret199642e4ewvlnuz5tuk5g0c0kej0k08xrj2wy5p" },
+        // { ticker: "JUNO", address: "juno199642e4ewvlnuz5tuk5g0c0kej0k08xrxaekwp" },
+        // { ticker: "DOT", address: "15Nin4yGgmdhhDktj2mRyHKZmHjb9TgLVA8vFUW6sZ58YRVF" },
+        // { ticker: "XTZ", address: "tz1huext9wtJBzFdUHaFNeAp7gDC4zD9ur78" },
+        // { ticker: "LTC", address: "ltc1q70xlzfzu33cuhfeypp5a6xmsueqyn5aj0hmyfw" },
+        // { ticker: "ALGO", address: "XEILGG27GB57HEWSL6PO3RBTFKNCBQXUBSMCVI3RCR3JXSACH4UTTKK2WI" },
+        // { ticker: "XLM", address: "GC36GHRCQ22OGQEW5DSWKFI6LIHBL7AJ4A2QFF5D3P76O3QWZT6L3LCD" },
+        // { ticker: "PIVX", address: "DDHDCBBRqqePUTAWeNYpTYmaWKyJMbfR3S" },
+        // { ticker: "BTC", address: "bc1qtt3jvvgmfvdn509kurf65lyuxe95szldg5ptgv" },
+        // { ticker: "DOGE", address: "DMg27R7BD8VnAEEpVgZGLeDfWYzBrvyuh5" },
+        // { ticker: "XMR", address: "4A31boV9AtQYgK4TgFuhqwicpETHANdaYcnJBninBNUCd4SEnhUQjEs3EnUsHAzTXaD19hSuZ8rpbRCEKxYbycAgMjwWoen" },
+        // { ticker: "BEAM", address: "1a6e3988029296a01a603d9c7cb07d6cfb26b84f737f80fe31d8fc1489e341b4850" },
+        // { ticker: "AVAX", address: "X-avax1tm4ussj98kpm96rafur9e0fh0rty5kye4m2nym" },
+        // { ticker: "XNO", address: "nano_1dbdzwm4gj35se3kznz1udqrmegaqywnor44t1hejm16grgdwprhgkwoqsto" },
+        // { ticker: "BAN", address: "ban_15aygkbjgchsorgz7s7uhmfm489kbujru58xsnpb7786uh65ho55qd3ogdpe" },
+        // { ticker: "USDC", address: "0x252b2948e6001595eda3b61c821b479f3ceafb12" },
+    ];
+
+    const keys = [];
+    const values = [];
+
+    wallets.forEach((w) => {
+        keys.push(`crypto.${w.ticker.toUpperCase()}.address`);
+        values.push(w.address);
+    })
+
+    ///console.log(JSON.stringify(keys), JSON.stringify(values));
+})();
