@@ -12,13 +12,31 @@ export const config: Config = {
     outputTargets: [
         {
             type: 'www',
-            // comment the following line to disable service workers in production
+            dir: "www",
+            baseUrl: 'https://zachary-dow.crypto',
             serviceWorker: null,
-            baseUrl: 'https://zachary-dow.crypto/',
+            buildDir: "build",
             copy: [
                 {
                     src: '../node_modules/cryptocurrency-icons/svg/color/**/*.svg',
                     dest: 'assets/cryptocurrency-icons/svg/color',
+                },
+            ]
+        },
+        {
+            type: 'www',
+            dir: "www-ipfs",
+            baseUrl: 'https://zachary-dow.crypto',
+            serviceWorker: false,
+            buildDir: ".",
+            copy: [
+                {
+                    src: '../node_modules/cryptocurrency-icons/svg/color/**/*.svg',
+                    dest: '.',
+                },
+                {
+                    src: '../www-ipfs/assets/**',
+                    dest: ".",
                 },
             ]
         },

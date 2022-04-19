@@ -1,0 +1,65 @@
+cli.js <command>
+
+Commands:
+  cli.js add [file...]                    Add a file to IPFS using the UnixFS da
+                                          ta format
+  cli.js bitswap <command>                Interact with the bitswap agent.
+  cli.js block <command>                  Manipulate raw IPFS blocks.
+  cli.js bootstrap <command>              Show or edit the list of bootstrap pee
+                                          rs.
+  cli.js cat <ipfsPath>                   Fetch and cat an IPFS path referencing
+                                           a file
+  cli.js cid <command>                    Convert, format and discover propertie
+                                          s of CIDs.
+  cli.js commands                         List all available commands
+  cli.js config <key> [value]             Get and set IPFS config values.
+  cli.js daemon                           Start a long-running daemon process
+  cli.js dag <command>                    Interact with ipld dag objects.
+  cli.js dht <command>                    Issue commands directly through the DH
+                                          T.
+  cli.js dns <domain>                     Resolve DNS links
+  cli.js files <command>                  Operations over mfs files (ls, mkdir,
+                                          rm, etc)
+  cli.js get <ipfsPath>                   Download IPFS objects
+  cli.js id [peerId]                      Shows IPFS Node ID info
+  cli.js init [default-config] [options]  Initialize a local IPFS node
+
+                                          If you a
+                                          re going to run IPFS in a server envir
+                                          onment, you may want to initialize it
+                                          using the 'server' profile.
+
+                                          For the l
+                                          ist of available profiles run `jsipfs
+                                          config profile ls`
+  cli.js key <command>                    Manage your keys
+  cli.js ls <key>                         List files for the given directory
+  cli.js name <command>                   Publish and resolve IPNS names.
+  cli.js object <command>                 Interact with ipfs objects.
+  cli.js pin <command>                    Pin and unpin objects to local storage
+                                          .
+  cli.js ping <peerId>                    Measure the latency of a connection
+  cli.js pubsub <command>                 pubsub commands
+  cli.js refs-local                       List all local references.
+  cli.js refs <key> [keys..]              List links (references) from an object
+  cli.js repo <command>                   Manipulate the IPFS repo.
+  cli.js resolve <name>                   Resolve the value of names to IPFS
+  cli.js shutdown                         Shut down the ipfs daemon
+  cli.js stats <command>                  Query IPFS statistics.
+  cli.js swarm <command>                  Swarm inspection tool.
+  cli.js version                          Shows IPFS version information
+  cli.js completion                       generate completion script
+
+Options:
+  --version  Show version number                                       [boolean]
+  --silent   Write no output                          [boolean] [default: false]
+  --pass     Pass phrase for the keys                     [string] [default: ""]
+  --migrate  Enable/disable automatic repo migrations [boolean] [default: false]
+  --api      Remote API multiaddr to use                                [string]
+  --help     Show help                                                 [boolean]
+
+ipfs uses a repository in the local file system. By default, the repo is located
+ at ~/.jsipfs. To change the repo location, set the $IPFS_PATH environment varia
+ble:
+
+export IPFS_PATH=/path/to/ipfsrepo

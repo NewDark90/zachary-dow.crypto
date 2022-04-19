@@ -353,6 +353,7 @@ MigrationBackup/
 dist/
 !www/favicon.ico
 www/
+www-ipfs/
 
 *~
 *.sw[mnpcod]
