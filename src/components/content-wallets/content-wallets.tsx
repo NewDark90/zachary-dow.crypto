@@ -23,7 +23,7 @@ export class ContentWallets implements ComponentInterface
     private layer2s = [
         { display: "Loopring", icon: <img src={getCryptoIconSvg("lrc")} /> },
         { display: "Polygon", icon: <img src={getCryptoIconSvg("matic")} /> },
-        { display: "Arbitrum", icon: <img src={getAssetPath(`../assets/layer2/arbitrum.svg`)} /> },
+        { display: "Arbitrum", icon: <img src={getAssetPath(`../assets/arbitrum.svg`)} /> },
     ];
 
     private qrCanvas?: HTMLCanvasElement = null;
@@ -72,7 +72,7 @@ export class ContentWallets implements ComponentInterface
         const imgErrorMainFn = function (this: HTMLImageElement, _ev) { 
             this.removeEventListener("error", imgErrorMainFn);
             this.addEventListener("error", imgErrorFallbackFn)
-            this.src = getAssetPath(`../assets/icon/generic-coin.svg`);
+            this.src = getAssetPath(`../assets/generic-coin.svg`);
         };
 
         return <img src={getCryptoIconSvg(ticker, cacheKey)} 

@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { inlineSvg } from 'stencil-inline-svg';
+import { terser } from "rollup-plugin-terser";
 
 // https://stenciljs.com/docs/config
 
@@ -9,13 +10,15 @@ export const config: Config = {
     globalStyle: 'src/global/app.scss',
     globalScript: 'src/global/app.ts',
     taskQueue: 'async',
+    hashFileNames: false,
     outputTargets: [
         {
             type: 'www',
             // comment the following line to disable service workers in production
-            serviceWorker: null,
+            serviceWorker: false,
             baseUrl: 'https://zachary-dow.crypto',
             buildDir: "build",
+            prerenderConfig: './prerender.config.ts',
             copy: [
                 {
                     src: '../node_modules/cryptocurrency-icons/svg/color/**/*.svg',
@@ -27,6 +30,7 @@ export const config: Config = {
     rollupPlugins: {
         after: [
             nodePolyfills(),
+            //terser()
         ]
     },
     plugins: [
