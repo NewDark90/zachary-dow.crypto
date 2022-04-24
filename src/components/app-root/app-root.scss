@@ -8,9 +8,9 @@
         background-color: styles.$primary-black;
         position: fixed;
         left: 0;
-        margin: 0 1.5vw;
         width: styles.$header-size;
         height: 100%;
+        margin: 0 1.5vw;
         box-sizing: border-box;
         z-index: 1000;
 
@@ -22,5 +22,18 @@
 
     main {
         box-sizing: border-box;
+    }
+}
+
+
+@include styles.break-medium-less
+{
+    :host
+    {
+        header {
+            margin: 0 4px;
+            width: styles.$header-size-small;
+        }
+
     }
 }

@@ -40,11 +40,11 @@ export class ContentWallets implements ComponentInterface
         this.getWallets();
     }
 
-    private async getWallets() 
-    { 
+    private async getWallets()
+    {
         const allWallets = await resolutionUtil.getWalletRecords(walletDomain);
-        const newWalletState = { 
-            preferred: [] as WalletRecord[], 
+        const newWalletState = {
+            preferred: [] as WalletRecord[],
             additional: [] as WalletRecord[]
         };
 
@@ -64,34 +64,34 @@ export class ContentWallets implements ComponentInterface
     {
         if (!ticker) return ticker;
 
-        const imgErrorFallbackFn = function (this: HTMLImageElement, _ev) { 
-            this.removeEventListener("error", imgErrorFallbackFn); 
-            this.style.visibility = "hidden"; 
+        const imgErrorFallbackFn = function (this: HTMLImageElement, _ev) {
+            this.removeEventListener("error", imgErrorFallbackFn);
+            this.style.visibility = "hidden";
         };
 
-        const imgErrorMainFn = function (this: HTMLImageElement, _ev) { 
+        const imgErrorMainFn = function (this: HTMLImageElement, _ev) {
             this.removeEventListener("error", imgErrorMainFn);
             this.addEventListener("error", imgErrorFallbackFn)
             this.src = getAssetPath(`../assets/generic-coin.svg`);
         };
 
-        return <img src={getCryptoIconSvg(ticker, cacheKey)} 
-                        onError={imgErrorMainFn} /> 
+        return <img src={getCryptoIconSvg(ticker, cacheKey)}
+                        onError={imgErrorMainFn} />
     }
 
     private walletElement(wallet: WalletRecord)
     {
         return (
-            <div class="icon-badge currency" 
-                onClick={() => { 
-                    this.selectedWallet = wallet; 
-                    toCanvas(this.qrCanvas, this.selectedWallet.address); 
+            <div class="icon-badge currency"
+                onClick={() => {
+                    this.selectedWallet = wallet;
+                    toCanvas(this.qrCanvas, this.selectedWallet.address);
                     }}>
                 <div class="icon">
                     { this.getTickerImage(wallet.ticker) }
                 </div>
                 <span class="display">
-                    { wallet.name ?? wallet.ticker } 
+                    { wallet.name ?? wallet.ticker }
                 </span>
             </div>
         );
@@ -101,7 +101,7 @@ export class ContentWallets implements ComponentInterface
     {
         return (
             <Host>
-                <div class="intro">  
+                <div class="intro">
                     Need to pay me for some reason?
                     <br />
                     Most of my wallets will be listed here.
@@ -114,63 +114,57 @@ export class ContentWallets implements ComponentInterface
                     </a>
                 </div>
 
-                <div>
-                    <div>
+                <div class="asset-lists">
+                    <div class="currency-list">
                         <h4 class="title">
                             Preferred
-                        </h4> 
-                        <div class="currency-list">
-                            {this.wallets.preferred.map((w) => this.walletElement(w))}
-                        </div>
+                        </h4>
+                        {this.wallets.preferred.map((w) => this.walletElement(w))}
                     </div>
-                    <div>
+                    <div class="currency-list">
                         <h4 class="title">
                             Additional
                         </h4>
-                        <div class="currency-list">
-                            {this.wallets.additional.map((w) => this.walletElement(w))}
-                        </div>
+                        {this.wallets.additional.map((w) => this.walletElement(w))}
                     </div>
-                    <div>
+                    <div class="l2-list">
                         <h4 class="title">
                             Ethereum Layer 2s
                         </h4>
-                        <div class="l2-list">
-                            {
-                                this.layer2s.map((l2) => (
-                                    <div class="icon-badge l2">
-                                        <div class="icon">
-                                            {l2.icon}
-                                        </div>
-                                        <span class="display">
-                                            { l2.display }
-                                        </span>
+                        {
+                            this.layer2s.map((l2) => (
+                                <div class="icon-badge l2">
+                                    <div class="icon">
+                                        {l2.icon}
                                     </div>
-                                ))
-                            }
-                        </div>
+                                    <span class="display">
+                                        { l2.display }
+                                    </span>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
-                
+
                 <div class={{"address-details": true, "hide": !this.selectedWallet}}>
                     <div>
-                        <div class="icon-big">
+                        <div class="icon ticker">
                             { this.getTickerImage(this.selectedWallet?.ticker, "big") }
                         </div>
-                        <h3 class="title">
+                        <h3 class="title coin-name">
                             {this.selectedWallet?.name}
                         </h3>
                     </div>
                     <canvas ref={(canvas) => { this.qrCanvas = canvas; }}></canvas>
                     <span class="address">
                         {this.selectedWallet?.address}
-                        <button class="copy-button" 
+                        <button class="copy-button"
                             innerHTML={copyIcon}
                             onClick={(_e) => {
                                 navigator.clipboard.writeText(this.selectedWallet?.address);
                             }}></button>
                     </span>
-                    <span class="icon-md close" innerHTML={closeIcon} 
+                    <span class="icon close" innerHTML={closeIcon}
                         onClick={() => { this.selectedWallet = null; }}>
                     </span>
                 </div>

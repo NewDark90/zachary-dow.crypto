@@ -3,28 +3,46 @@
 @include styles.common-content;
 @include styles.common-links;
 
-:host 
+:host
 {
     position: relative;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: space-evenly;
-    font-size: 1.5rem;
+    box-sizing: border-box;
+
+    > div {
+        padding: 1vh 0;
+    }
+
+    .intro {
+        font-size: 1.5rem;
+        font-size: clamp(0.8rem, 1.1 * (1vw + 1vh), 2rem);
+    }
+
+    .asset-lists {
+        > div {
+            padding: 1vh 0;
+        }
+    }
 
     .title {
-        margin: 0.5rem;
+        width: 100%;
+        margin: 0.5vh 0.5vw;
+        font-size: 2rem;
+        font-size: clamp(0.75rem, 1.2 * (1vw + 1vh), 2rem);
     }
-    
+
     .address-details {
         background-color: styles.$primary-black;
         position: absolute;
-        left: 0; 
+        left: 0;
         top: 0;
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        padding: 2rem;
+        padding: 4vh 4vw;
         border-radius: 0.5rem;
 
         display: flex;
@@ -32,8 +50,14 @@
         align-items: center;
         justify-content: space-evenly;
 
+        .title {
+            width: auto;
+        }
+
         .address {
             word-break: break-all;
+            font-size: 2rem;
+            font-size: clamp(1rem, 1.25 * (1vw + 1vh), 2rem);
         }
 
         .close {
@@ -42,7 +66,7 @@
             right: 12px;
 
             color: styles.$primary-red;
-            @include styles.hover-active 
+            @include styles.hover-active
             {
                 color: styles.$primary-white;
             }
@@ -51,6 +75,7 @@
 
     .l2-list, .currency-list {
         font-size: 1rem;
+        font-size: clamp(0.5rem, 0.8 * (1vw + 1vh), 1.5rem);
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -59,8 +84,8 @@
     }
 
     .icon-badge {
-        padding: 0.5rem;
-        margin: 0.5rem;
+        padding: 1vh 0.5vw;
+        margin: 0.5vh 0.5vw;
         color: styles.$secondary-green;
         border: 2px solid styles.$secondary-green;
         border-radius: 8px;
@@ -72,7 +97,7 @@
 
     .icon-badge:not(.l2)
     {
-        @include styles.hover-active 
+        @include styles.hover-active
         {
             color: styles.$primary-red;
             border-color: styles.$primary-red;
@@ -80,24 +105,21 @@
     }
 
 
-    .icon, .icon-md, .icon-big {
+    .icon {
         margin: 0 auto;
-        width: 100%;
-
         img {
             width: 100%;
+            max-height: 4vh;
+            max-width: 4vw;
         }
-    }    
 
-    .icon {
-        max-width: 32px;
+        &.ticker img {
+            max-height: 15vh;
+            max-width: 15vw;
+        }
     }
-    .icon-md {
-        max-width: 64px;
-    }
-    .icon-big {
-        max-width: 128px;
-    }
+
+
 
     .copy-button {
         background-color: rgba(0,0,0,0);
@@ -107,7 +129,7 @@
             color: styles.$secondary-green;
             width: 24px;
 
-            @include styles.hover-active 
+            @include styles.hover-active
             {
                 color: styles.$primary-red;
             }
@@ -115,7 +137,7 @@
     }
 
     .display {
-        padding: 0.5rem;
+        padding: 0.5vh 0.5vw;
     }
 
     .currency-list .icon {
@@ -126,4 +148,15 @@
         display: none;
     }
 
+}
+
+@include styles.break-medium-less {
+    :host {
+
+
+        .title {
+            padding: 1vh 1vw;
+            width: auto;
+        }
+    }
 }

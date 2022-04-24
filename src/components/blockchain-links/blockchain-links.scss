@@ -1,6 +1,6 @@
 @use "../../styles";
 
-:host 
+:host
 {
     display: flex;
     align-items: center;
@@ -12,10 +12,15 @@
 
     height: (100vh - styles.$blockchain-block-height);
     width: 100%;
+
     font-size: 3rem;
+    font-size: clamp(1rem, 2.25 * (1vw + 1vh), 4rem);
+    margin-left: styles.$header-size-small * 0.5;
 
     .center-break {
         text-align: center;
-        color: styles.$secondary-green 
+        color: styles.$secondary-green
     }
 }
+
+

@@ -1,6 +1,6 @@
 import { getAssetPath } from "@stencil/core";
 
-export function getCryptoIconSvg(ticker: string, cacheKey?: string)
+export function getCryptoIconSvg(ticker: string, _cacheKey?: string)
 {
     if (!ticker)
         return ticker;
@@ -10,8 +10,8 @@ export function getCryptoIconSvg(ticker: string, cacheKey?: string)
 
     let path = getAssetPath(`../assets/cryptocurrency-icons/svg/color/${ticker.toLowerCase()}.svg`);
 
-    if (cacheKey)
-        path += `?key=${cacheKey}`
+    //if (cacheKey)
+        //path += `?key=${cacheKey}`
 
     return path;
 }

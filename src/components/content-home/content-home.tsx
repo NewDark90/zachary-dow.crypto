@@ -19,9 +19,9 @@ export class ContentHome implements ComponentInterface
                         also known as <span class="highlight">NewDark</span>.
                     </span>
                 </h1>
-                <div>
+                <div class="iama">
                     I am a...
-                    <ul class="iama">
+                    <ul>
                         <li class="computer">
                             Developer
                         </li>

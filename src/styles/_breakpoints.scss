@@ -1,0 +1,39 @@
+/**
+    Minimum supported breakpoint
+*/
+$breakpoint-min: 480px;
+/**
+    Where everything collapses in as tight as can get
+*/
+$breakpoint-small: 768px;
+$breakpoint-medium: 1024px;
+$breakpoint-large: 1200px;
+
+// ---
+/**
+    Where everything collapses in as tight as can get
+*/
+@mixin break-small-less {
+    @media only screen and (max-width: $breakpoint-small) { @content; }
+}
+@mixin break-medium-less  {
+    @media only screen and (max-width: $breakpoint-medium) { @content; }
+}
+@mixin break-large-less  {
+    @media only screen and (max-width: $breakpoint-large) { @content; }
+}
+
+//---
+
+@mixin break-min-more {
+    @media only screen and (min-width: $breakpoint-min) { @content; }
+}
+@mixin break-small-more {
+    @media only screen and (min-width: $breakpoint-small) { @content; }
+}
+@mixin break-medium-more  {
+    @media only screen and (min-width: $breakpoint-medium) { @content; }
+}
+@mixin break-large-more  {
+    @media only screen and (min-width: $breakpoint-large) { @content; }
+}

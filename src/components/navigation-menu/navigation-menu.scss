@@ -45,3 +45,21 @@
         color: styles.$primary-white;
     }
 }
+
+@include styles.break-medium-less
+{
+    :host {
+        height: 100%;
+        width: styles.$header-size-small;
+
+        a {
+            font-size: 0.5rem;
+        }
+
+        svg {
+            width: styles.$header-size-small;
+            height: styles.$header-size * 0.75;
+        }
+
+    }
+}

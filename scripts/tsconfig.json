@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "declaration": false,
+        "lib": ["es2017"],
+        "moduleResolution": "Node",
+        "module": "commonjs",
+        "target": "ESNext",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+    },
+    "include": ["."]
+}

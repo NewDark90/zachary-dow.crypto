@@ -1,6 +1,7 @@
 @use "../palette";
+@use "../breakpoints";
 
-@mixin common-content 
+@mixin common-content
 {
     :host
     {
@@ -23,12 +24,30 @@
 
         .icon {
             margin: 0 auto;
-    
+
             svg {
                 width: 100%;
                 max-width: 64px;
-                //background: radial-gradient(circle, rgba(255,255,255,1) 92%, rgba(0,0,0,0) 93%, rgba(0,0,0,0) 100%);
+            }
+        }
+    }
+
+    @media only screen and (max-width: breakpoints.$breakpoint-large)
+    {
+        :host {
+            padding: 0.5rem;
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .icon {
+                svg {
+                    max-width: 64px * 0.5;
+                }
             }
         }
     }
 }
+
+

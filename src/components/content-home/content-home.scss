@@ -4,46 +4,95 @@
 @include styles.common-content;
 
 
-:host 
+:host
 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    
+
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
+        font-size: clamp(1rem, 2.25 * (1vw + 1vh), 4rem);
     }
 
     .alias {
         width: 100%;
         font-size: 1.5rem;
+        font-size: clamp(0.8rem, 1.25 * (1vw + 1vh), 1.75rem);
         text-align: right;
     }
 
-    ul {
-        text-align: left;
-        list-style-type: none;
+    .iama {
+        font-size: 2.25rem;
+        font-size: clamp(1rem, 1.5 * (1vw + 1vh), 2rem);
+        margin: 0 auto;
 
-        &.iama {
-            font-size: 2.5rem;
+        ul {
+            text-align: left;
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            padding: 0;
+
+            li {
+                margin: 1rem 0;
+
+                &::before {
+                    text-align: center;
+                    display: inline-block;
+                    width: 50px;
+                    margin: 0 1rem;
+                }
+            }
+
+            li.computer::before { content: "💻"; }
+            li.chain::before { content: "⛓️"; }
+            li.fist::before { content: "✊"; }
+            li.tree::before { content: "🌲"; }
         }
+    }
+}
 
-        li {
-            margin: 1rem 0;
+@include styles.break-large-less
+{
+    :host {
+        .iama {
+            font-size: 1.75rem;
+        }
+    }
+}
 
-            &::before {
+@include styles.break-medium-less
+{
+    :host {
+        .iama {
+            font-size: 1.5rem;
+            ul {
+                flex-direction: row;
+                flex-wrap: wrap;
                 text-align: center;
-                display: inline-block;
-                width: 50px;
-                margin: 0 1rem;
+                li {
+                    flex-basis: 50%;
+                    &::before {
+                        width: 100%;
+                        margin: 0 auto;
+                    }
+                }
             }
         }
-
-        li.computer::before { content: "💻"; }
-        li.chain::before { content: "⛓️"; }
-        li.fist::before { content: "✊"; }
-        li.tree::before { content: "🌲"; }
     }
+}
 
+@include styles.break-small-less
+{
+    :host {
+        .alias {
+            font-size: 0.8rem;
+        }
+        .iama {
+            font-size: 1.25rem;
+        }
+    }
 }
