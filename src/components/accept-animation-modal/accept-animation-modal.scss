@@ -23,6 +23,7 @@ accept-animation-modal {
         width: 100%;
         font-weight: bold;
         font-size: 4rem;
+        font-size: clamp(1.25rem, 2.5 * (1vw + 1vh), 5rem);
         text-transform: uppercase;
     }
 
@@ -32,7 +33,7 @@ accept-animation-modal {
 
     .dialog {
         display: flex;
-        width: 100%;
+        width: 90vw;
         max-width: 900px;
         height: 50vh;
         margin: 25vh auto;
@@ -51,6 +52,7 @@ accept-animation-modal {
 
     button.choice {
         font-size: 5rem;
+        font-size: clamp(1rem, 3 * (1vw + 1vh), 5rem);
         border-radius: 1rem;
         border: 8px solid;
         background-color: rgba(0, 0, 0, 0);

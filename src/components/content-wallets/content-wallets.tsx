@@ -104,14 +104,7 @@ export class ContentWallets implements ComponentInterface
                 <div class="intro">
                     Need to pay me for some reason?
                     <br />
-                    Most of my wallets will be listed here.
-                    <br />
-                    For a comprehensive list, check out the addresses listed at:
-                    <br />
-                    <a href={`https://unstoppabledomains.com/api/v1/resolution/resolve/${walletDomain}`}
-                        target="blank" rel="noopener">
-                        {walletDomain}
-                    </a>
+                    Most of my wallets are listed here.
                 </div>
 
                 <div class="asset-lists">
@@ -167,6 +160,15 @@ export class ContentWallets implements ComponentInterface
                     <span class="icon close" innerHTML={closeIcon}
                         onClick={() => { this.selectedWallet = null; }}>
                     </span>
+                </div>
+
+                <div>
+                    Wallets pulled from the
+                    <a href={`https://unstoppabledomains.com/api/v1/resolution/resolve/${walletDomain}`}
+                        target="blank" rel="noopener">
+                        {walletDomain}
+                    </a>
+                    domain.
                 </div>
             </Host>
         );

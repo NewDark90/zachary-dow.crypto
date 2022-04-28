@@ -13,7 +13,7 @@
 
     h1 {
         font-size: 3rem;
-        font-size: clamp(1rem, 2.25 * (1vw + 1vh), 4rem);
+        font-size: clamp(1rem, 2.25 * (1vw + 1vh), 5rem);
     }
 
     .alias {
@@ -25,7 +25,7 @@
 
     .iama {
         font-size: 2.25rem;
-        font-size: clamp(1rem, 1.5 * (1vw + 1vh), 2rem);
+        font-size: clamp(1rem, 1.5 * (1vw + 1vh), 3rem);
         margin: 0 auto;
 
         ul {
@@ -55,24 +55,16 @@
     }
 }
 
-@include styles.break-large-less
-{
-    :host {
-        .iama {
-            font-size: 1.75rem;
-        }
-    }
-}
-
 @include styles.break-medium-less
 {
     :host {
         .iama {
-            font-size: 1.5rem;
             ul {
                 flex-direction: row;
                 flex-wrap: wrap;
                 text-align: center;
+                align-items: center;
+                justify-content: center;
                 li {
                     flex-basis: 50%;
                     &::before {
@@ -81,18 +73,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-@include styles.break-small-less
-{
-    :host {
-        .alias {
-            font-size: 0.8rem;
-        }
-        .iama {
-            font-size: 1.25rem;
         }
     }
 }

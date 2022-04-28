@@ -64,6 +64,12 @@
             position: absolute;
             top: 12px;
             right: 12px;
+            width: 32px;
+            height: 32px;
+
+            svg {
+                width: 100%;
+            }
 
             color: styles.$primary-red;
             @include styles.hover-active
@@ -79,7 +85,7 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        align-items: baseline;
+        align-items: stretch;
         justify-content: center;
     }
 
@@ -97,6 +103,8 @@
 
     .icon-badge:not(.l2)
     {
+        cursor: pointer;
+
         @include styles.hover-active
         {
             color: styles.$primary-red;
@@ -106,16 +114,15 @@
 
 
     .icon {
+        width: 2vw;
         margin: 0 auto;
+
         img {
             width: 100%;
-            max-height: 4vh;
-            max-width: 4vw;
         }
 
-        &.ticker img {
-            max-height: 15vh;
-            max-width: 15vw;
+        &.ticker {
+            width: 10vw;
         }
     }
 

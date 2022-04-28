@@ -2,12 +2,13 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "allowUnreachableCode": false,
+        "esModuleInterop": true,
         "declaration": false,
         "lib": ["es2017"],
         "moduleResolution": "Node",
         "module": "commonjs",
         "target": "ESNext",
-        "noUnusedLocals": true,
+        //"noUnusedLocals": true,
         "noUnusedParameters": true,
     },
     "include": ["."]

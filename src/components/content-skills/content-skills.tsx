@@ -1,14 +1,14 @@
 import { Component, Host, h, ComponentInterface } from '@stencil/core';
 import { IconLink } from '../../env';
 import stencilIcon from "ionicons/dist/svg/logo-stencil.svg";
-import { 
+import {
     siTypescript,
     siJavascript,
     siJava,
     siHtml5,
     siCss3,
     siDotnet,
-    siCplusplus, 
+    siCplusplus,
     siCsharp,
     siJest,
     siReact,
@@ -20,11 +20,12 @@ import {
     siMicrosoftsqlserver,
     siGit,
     siNodedotjs,
-    siWebassembly, 
+    siWebassembly,
     siIpfs,
     siPowershell,
     siSvg,
-    siWindows
+    siWindows,
+    siGo,
 } from 'simple-icons/icons';
 
 @Component({
@@ -35,7 +36,7 @@ import {
 export class ContentSkills implements ComponentInterface
 {
 
-    private getSkillsets() 
+    private getSkillsets()
     {
         const skillsets: { display: string, list: Array<IconLink & {color?: string}> }[] = [
             {
@@ -77,6 +78,7 @@ export class ContentSkills implements ComponentInterface
                     { name: siAssemblyscript.title, icon: siAssemblyscript.svg, color: siAssemblyscript.hex  },
                     { name: siWebassembly.title, icon: siWebassembly.svg, color: siWebassembly.hex  },
                     { name: siIpfs.title, icon: siIpfs.svg, color: siIpfs.hex  },
+                    { name: siGo.title, icon: siGo.svg, color: siGo.hex  },
                 ]
             }
         ];
@@ -85,7 +87,7 @@ export class ContentSkills implements ComponentInterface
 
     render()
     {
-        const skillsets = this.getSkillsets(); 
+        const skillsets = this.getSkillsets();
         return (
             <Host>
                 {
