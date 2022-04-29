@@ -40,11 +40,17 @@
 
 @include styles.break-medium-less
 {
-    $box-margin: 8px;
-    $header-margin-total: 8px;
-
     :host {
-        width: calc(100% - ($box-margin * 2 + styles.$header-size-small + $header-margin-total));
-        margin: 0 ($box-margin) 0 ($box-margin + styles.$header-size-small + $header-margin-total);
+        width: styles.$blockchain-block-width-medium;
+        margin: styles.$blockchain-block-margin-medium;
+    }
+}
+
+@include styles.break-small-less
+{
+    :host
+    {
+        width: styles.$blockchain-block-width-small;
+        margin: styles.$blockchain-block-margin-small;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host } from '@stencil/core';
+import { Component, h, ComponentInterface, Host, State } from '@stencil/core';
 
 @Component({
     tag: 'app-root',
@@ -8,17 +8,25 @@ import { Component, h, ComponentInterface, Host } from '@stencil/core';
 export class AppRoot implements ComponentInterface
 {
 
-    render()
+    @State() animationChoice?: boolean;
+
+
+
+    render(): any
     {
         return (
             <Host>
-                <accept-animation-modal></accept-animation-modal>
+                <accept-animation-modal
+                    onAcceptAnimationModal-showAnimations={(e) => {
+                        this.animationChoice = e.detail.choice;
+                    }}>
+                </accept-animation-modal>
                 <header>
                     <navigation-menu></navigation-menu>
                 </header>
 
                 <main>
-                    <blockchain-display></blockchain-display>
+                    <blockchain-display animationChoice={this.animationChoice}></blockchain-display>
                 </main>
             </Host>
         );

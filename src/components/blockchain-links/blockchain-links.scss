@@ -14,8 +14,10 @@
     width: 100%;
 
     font-size: 3rem;
-    font-size: clamp(1rem, 2.25 * (1vw + 1vh), 4rem);
+    font-size: clamp(10rem, 14 * (1vw + 1vh), 50rem);
     margin-left: styles.$header-size-small * 0.5;
+
+    z-index: -50;
 
     .center-break {
         text-align: center;

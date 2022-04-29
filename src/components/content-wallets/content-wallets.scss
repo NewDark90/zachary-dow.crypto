@@ -16,9 +16,9 @@
         padding: 1vh 0;
     }
 
-    .intro {
+    .desc {
         font-size: 1.5rem;
-        font-size: clamp(0.8rem, 1.1 * (1vw + 1vh), 2rem);
+        font-size: clamp(0.9rem, 1.1 * (1vw + 1vh), 2rem);
     }
 
     .asset-lists {
@@ -81,7 +81,7 @@
 
     .l2-list, .currency-list {
         font-size: 1rem;
-        font-size: clamp(0.5rem, 0.8 * (1vw + 1vh), 1.5rem);
+        font-size: clamp(0.7rem, 0.8 * (1vw + 1vh), 1.5rem);
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -159,7 +159,9 @@
 
 @include styles.break-medium-less {
     :host {
-
+        .icon {
+            width: 3vw;
+        }
 
         .title {
             padding: 1vh 1vw;

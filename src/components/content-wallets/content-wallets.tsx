@@ -101,7 +101,7 @@ export class ContentWallets implements ComponentInterface
     {
         return (
             <Host>
-                <div class="intro">
+                <div class="desc intro">
                     Need to pay me for some reason?
                     <br />
                     Most of my wallets are listed here.
@@ -162,13 +162,12 @@ export class ContentWallets implements ComponentInterface
                     </span>
                 </div>
 
-                <div>
-                    Wallets pulled from the
-                    <a href={`https://unstoppabledomains.com/api/v1/resolution/resolve/${walletDomain}`}
+                <div class="desc">
+                    <span>Wallets pulled from </span>
+                    <a href={`https://ud.me/${walletDomain}`}
                         target="blank" rel="noopener">
                         {walletDomain}
                     </a>
-                    domain.
                 </div>
             </Host>
         );

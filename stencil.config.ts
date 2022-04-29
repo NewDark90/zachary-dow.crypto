@@ -11,6 +11,7 @@ export const config: Config = {
     globalScript: 'src/global/app.ts',
     taskQueue: 'async',
     hashFileNames: false,
+    //sourceMap: true,
     outputTargets: [
         {
             type: 'www',

@@ -2,7 +2,7 @@ import { Resolution } from "@unstoppabledomains/resolution";
 import { cryptoSymbol } from 'crypto-symbol'
 import { WalletRecord } from "./WalletRecord";
 
-export class ResolutionUtil 
+export class ResolutionUtil
 {
     private nameLookup = cryptoSymbol({
         "Juno": "JUNO" as const,
@@ -12,7 +12,7 @@ export class ResolutionUtil
 
     constructor(
         private resolution: Resolution
-    ) 
+    )
     {
 
     }
@@ -22,8 +22,8 @@ export class ResolutionUtil
         const rawRecords = await this.resolution.allNonEmptyRecords(walletDomain);
 
         const records = Object.entries(rawRecords)
-            .filter(([key, _val]) => { 
-                return key.match(/^crypto\./) 
+            .filter(([key, _val]) => {
+                return key.match(/^crypto\./)
             })
             .map((([key, val]): WalletRecord => {
                 const splitKey = key.split(".");
@@ -42,8 +42,6 @@ export class ResolutionUtil
                 return null;
             }))
             .filter((record) => record !== null);
-
-        console.log(records);
 
         return records;
     }

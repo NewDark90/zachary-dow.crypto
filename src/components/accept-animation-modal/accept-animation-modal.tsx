@@ -1,6 +1,6 @@
 import { Component, Host, h, ComponentInterface, Event, EventEmitter, State } from "@stencil/core";
 
-/** 
+/**
  * Don't create a stacking context. z-index/position/etc. Attach directly into body.
  * https://www.npmjs.com/package/dialog-polyfill
  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
@@ -19,8 +19,17 @@ export class AcceptAnimationModal implements ComponentInterface
         composed: true,
         cancelable: false,
         bubbles: true,
-    }) 
+    })
     choiceEmitter: EventEmitter<{ choice: boolean }>;
+
+    componentWillLoad(): void | Promise<void>
+    {
+        const mediumBreakpoint = 1024;
+        if (window.innerWidth <= mediumBreakpoint)
+        {
+            this.showAnimationSelect(false);
+        }
+    }
 
     componentDidLoad()
     {

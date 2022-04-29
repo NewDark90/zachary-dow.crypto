@@ -14,10 +14,11 @@ export namespace Components {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "observeFrame": boolean;
+        "animationChoice"?: boolean;
         "sectionConfig": IconLink;
     }
     interface BlockchainDisplay {
+        "animationChoice"?: boolean;
     }
     interface BlockchainLinks {
     }
@@ -154,11 +155,12 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface BlockchainBlock {
-        "observeFrame"?: boolean;
+        "animationChoice"?: boolean;
         "onBlockchainBlock-frameIntersect"?: (event: CustomEvent<BlockchainBlockFrameIntersectDetail>) => void;
         "sectionConfig"?: IconLink;
     }
     interface BlockchainDisplay {
+        "animationChoice"?: boolean;
     }
     interface BlockchainLinks {
     }

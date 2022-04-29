@@ -43,5 +43,3 @@ export class BitList
 }
 
 export const bitList = new BitList(rareEmojis, emojiRarity);
-
-console.log(bitList);

@@ -12,7 +12,7 @@ export class BlockchainLinks
         return (
             <Host>
                 <div class="center-break">
-                    - &#9939; -
+                    &#9939;
                 </div>
             </Host>
         );

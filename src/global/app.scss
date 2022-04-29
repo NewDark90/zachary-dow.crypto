@@ -22,7 +22,8 @@ body {
     color: styles.$primary-white;
     background: styles.$primary-black url("../assets/stardust-green.png") center center repeat;
     background-attachment: fixed;
-    scroll-behavior: smooth;
+    overflow-x: hidden;
+    //overflow-y: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {

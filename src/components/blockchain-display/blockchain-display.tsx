@@ -1,4 +1,4 @@
-import { Component, Host, h, ComponentInterface, State } from '@stencil/core';
+import { Component, Host, h, ComponentInterface, Prop } from '@stencil/core';
 import { sectionConfigs } from '../../env';
 import { insertBetween } from '../../util';
 
@@ -9,12 +9,7 @@ import { insertBetween } from '../../util';
 })
 export class BlockchainDisplay implements ComponentInterface
 {
-    @State() loaded: boolean = false;
-
-    componentDidLoad() 
-    {
-        this.loaded = true;
-    }
+    @Prop() animationChoice?: boolean;
 
     private getContent(key: string)
     {
@@ -38,7 +33,7 @@ export class BlockchainDisplay implements ComponentInterface
                     insertBetween(
                         sectionConfigs.map(config => {
                             return (
-                                <blockchain-block observe-frame={this.loaded} section-name={config.name} sectionConfig={config}>
+                                <blockchain-block animationChoice={this.animationChoice} section-name={config.name} sectionConfig={config}>
                                     {this.getContent(config.name)}
                                 </blockchain-block>
                             )

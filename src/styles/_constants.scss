@@ -1,5 +1,15 @@
 $header-size: 64px;
 $header-size-small: $header-size * 0.5;
+$header-margin-total-medium: 8px;
+
+$box-margin-medium: 8px;
 
 $blockchain-block-width: 80vw;
 $blockchain-block-height: 80vh;
+
+$blockchain-block-width-medium: calc(100% - ($box-margin-medium * 2 + $header-size-small + $header-margin-total-medium));
+$blockchain-block-margin-medium: 0 ($box-margin-medium) 0 ($box-margin-medium + $header-size-small + $header-margin-total-medium);
+
+$blockchain-block-width-small: 96vw;
+$blockchain-block-margin-small: 0 auto;
+
