@@ -1,4 +1,5 @@
 export * from './DirectoryPaths';
+export * from './copyFromIpfs';
 export * from './getDirectoryFiles';
 export * from './getLocalDesktopHttpClient';
 export * from './pathsToIpfsContent';

@@ -20,8 +20,6 @@ export async function getDirectoryFilePaths(dir: string): Promise<DirectoryPaths
 {
     const files = await getFilePaths(dir);
 
-    console.log(files);
-
     return files.map(f =>
     {
         return {

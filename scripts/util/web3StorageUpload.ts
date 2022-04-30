@@ -1,6 +1,7 @@
 import { ToFile, ToDirectory } from 'ipfs-core-types/src/utils';
 import { Web3Storage } from 'web3.storage';
 import { Readable } from "stream";
+import { result } from 'lodash';
 
 export async function web3StorageUpload(rootFolder: string, ipfsContent: Array<ToFile | ToDirectory>)
 {
@@ -12,5 +13,6 @@ export async function web3StorageUpload(rootFolder: string, ipfsContent: Array<T
             stream: () => { return Readable.from(entry.content); }
         };
     });
-    return await client.put(putContent, { name: rootFolder });
+    return await client.put(putContent, { name: rootFolder, wrapWithDirectory: true  })
+        .then((result) => {  console.info("Web3 Storage: Done", result); return result; });
 }

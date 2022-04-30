@@ -13,5 +13,5 @@ export async function pinataUpload(cid: string)
                 uploaded: new Date().toUTCString()
             }
         } as { name: string; keyvalues: Record<string, string>; } as any //pinataMetadata type is currently bad.
-    });
+    }).then((response) => { console.info("Pinata: Done"); return response;});
 }

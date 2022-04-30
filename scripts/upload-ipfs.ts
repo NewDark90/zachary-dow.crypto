@@ -8,15 +8,16 @@ import {
     web3StorageUpload,
     pinataUpload,
     getLocalDesktopHttpClient,
-    pathsToIpfsContent
+    pathsToIpfsContent,
+    copyFromIpfs
 } from "./util";
 
 const pathToBuild = "../www";
 const wwwFolder = join(__dirname, pathToBuild);
-const mfsSiteFolder = "/zachary-dow.crypto";
+const mfsSiteFolder = "/zachary-dow-crypto";
 const uploadLogFile = join(__dirname, "../uploads.txt");
 
-async function main(): Promise<void>
+async function preferLocalUpload()
 {
     const allPaths = await getDirectoryFilePaths(wwwFolder);
     const ipfsContent = await pathsToIpfsContent(allPaths);
@@ -24,7 +25,6 @@ async function main(): Promise<void>
     const folderStat = await writeAllFilesToMFS(desktopHttpClient, mfsSiteFolder, ipfsContent);
 
     const cid = folderStat.cid.toString();
-    console.log("MFS Write File: Done", cid);
 
     await appendFile(uploadLogFile,
         JSON.stringify({
@@ -34,11 +34,34 @@ async function main(): Promise<void>
     );
 
     await pinataUpload(cid);
-    console.info("Pinata: Done");
 
     await web3StorageUpload(mfsSiteFolder, ipfsContent);
-    console.info("Web3 Storage: Done");
+}
 
+async function preferWeb3Upload()
+{
+    const allPaths = await getDirectoryFilePaths(wwwFolder);
+    const ipfsContent = await pathsToIpfsContent(allPaths);
+    const desktopHttpClient = await getLocalDesktopHttpClient();
+
+    const cid = await web3StorageUpload("", ipfsContent);
+
+    await appendFile(uploadLogFile,
+        JSON.stringify({
+            cid: cid,
+            uploadedAt: Date.now()
+        }) + "\n"
+    );
+
+    await pinataUpload(cid);
+
+    await copyFromIpfs(desktopHttpClient, mfsSiteFolder, cid);
+}
+
+async function main(): Promise<void>
+{
+    //await preferLocalUpload();
+    await preferWeb3Upload();
     console.info("Done");
 }
 

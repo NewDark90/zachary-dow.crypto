@@ -6,8 +6,8 @@ export async function writeAllFilesToMFS(node: IPFS, rootFolder: string, ipfsCon
     try { await node.files.rm(`${rootFolder}`, {recursive: true}); }
     catch (err) { /*Folder might not exist yet and that's ok. */ }
 
-    try { await node.repo.gc() }
-    catch (err) { /*Folder might not exist yet and that's ok. */ }
+    //try { await node.repo.gc() }
+    //catch (err) {  }
 
     await Promise.all(
         ipfsContent.map(async ({ path, content }) => {
@@ -28,6 +28,8 @@ export async function writeAllFilesToMFS(node: IPFS, rootFolder: string, ipfsCon
     const folderStat = await node.files.stat(rootFolder);
 
     await node.pin.add(folderStat.cid, { recursive: true });
+
+    console.log("writeAllFilesToMFS: Done", folderStat.cid);
 
     return folderStat;
 }
