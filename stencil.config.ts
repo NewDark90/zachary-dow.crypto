@@ -9,6 +9,7 @@ import { terser } from "rollup-plugin-terser";
 export const config: Config = {
     globalStyle: 'src/global/app.scss',
     globalScript: 'src/global/app.ts',
+    buildEs5: true,
     taskQueue: 'async',
     hashFileNames: false,
     //sourceMap: true,
