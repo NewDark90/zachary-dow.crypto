@@ -13,19 +13,14 @@ import {
     siJest,
     siReact,
     siRust,
-    siSolidity,
     siAzuredevops,
     siSass,
-    siAssemblyscript,
     siMicrosoftsqlserver,
     siGit,
     siNodedotjs,
-    siWebassembly,
-    siIpfs,
     siPowershell,
-    siSvg,
     siWindows,
-    siGo,
+    siAngular,
 } from 'simple-icons/icons';
 
 @Component({
@@ -44,19 +39,20 @@ export class ContentSkills implements ComponentInterface
                 list: [
                     { name: siTypescript.title, icon: siTypescript.svg, color: siTypescript.hex },
                     { name: siJavascript.title, icon: siJavascript.svg, color: siJavascript.hex },
+                    { name: siDotnet.title, icon: siDotnet.svg, color: siDotnet.hex  },
                     { name: siHtml5.title, icon: siHtml5.svg, color: siHtml5.hex  },
                     { name: siCss3.title, icon: siCss3.svg, color: siCss3.hex  },
                     { name: siSass.title, icon: siSass.svg, color: siSass.hex },
-                    { name: "Stencil", icon: stencilIcon  },
                     { name: siCsharp.title, icon: siCsharp.svg, color: siCsharp.hex  },
                 ]
             }, {
                 display: "Proficient",
                 list: [
                     { name: siNodedotjs.title, icon: siNodedotjs.svg, color: siNodedotjs.hex  },
-                    { name: siDotnet.title, icon: siDotnet.svg, color: siDotnet.hex  },
                     { name: siGit.title, icon: siGit.svg, color: siGit.hex  },
                     { name: siReact.title, icon: siReact.svg, color: siReact.hex  },
+                    { name: siAngular.title, icon: siAngular.svg, color: siAngular.hex  },
+                    { name: "Stencil", icon: stencilIcon  },
                     { name: "SQL Server", icon: siMicrosoftsqlserver.svg, color: siMicrosoftsqlserver.hex  },
                     { name: siWindows.title, icon: siWindows.svg, color: siWindows.hex  },
                 ]
@@ -67,20 +63,20 @@ export class ContentSkills implements ComponentInterface
                     { name: siPowershell.title, icon: siPowershell.svg, color: siPowershell.hex  },
                     { name: siJava.title, icon: siJava.svg, color: siJava.hex  },
                     { name: siCplusplus.title, icon: siCplusplus.svg, color: siCplusplus.hex  },
-                    { name: siSvg.title, icon: siSvg.svg, color: siSvg.hex  },
+                    { name: siRust.title, icon: siRust.svg, color: siRust.hex  },
                     { name: siAzuredevops.title, icon: siAzuredevops.svg, color: siAzuredevops.hex  },
                 ]
-            }, {
+            }, /*{
                 display: "Learning",
                 list: [
-                    { name: siRust.title, icon: siRust.svg, color: siRust.hex  },
                     { name: siSolidity.title, icon: siSolidity.svg, color: siSolidity.hex  },
                     { name: siAssemblyscript.title, icon: siAssemblyscript.svg, color: siAssemblyscript.hex  },
                     { name: siWebassembly.title, icon: siWebassembly.svg, color: siWebassembly.hex  },
                     { name: siIpfs.title, icon: siIpfs.svg, color: siIpfs.hex  },
                     { name: siGo.title, icon: siGo.svg, color: siGo.hex  },
+                    { name: siSvg.title, icon: siSvg.svg, color: siSvg.hex  },
                 ]
-            }
+            } */
         ];
         return skillsets;
     }

@@ -1,6 +1,5 @@
 import { Component, Host, h, ComponentInterface, getAssetPath, State } from '@stencil/core';
 import { resolutionUtil, WalletRecord } from "../../cryptocurrency";
-import { walletDomain } from '../../env';
 import { getCryptoIconSvg } from '../../util';
 import { toCanvas } from "qrcode"
 import copyIcon from "ionicons/dist/svg/copy-outline.svg";
@@ -42,7 +41,7 @@ export class ContentWallets implements ComponentInterface
 
     private async getWallets()
     {
-        const allWallets = await resolutionUtil.getWalletRecords(walletDomain);
+        const allWallets = await resolutionUtil.getWalletRecords();
         const newWalletState = {
             preferred: [] as WalletRecord[],
             additional: [] as WalletRecord[]
@@ -160,14 +159,6 @@ export class ContentWallets implements ComponentInterface
                     <span class="icon close" innerHTML={closeIcon}
                         onClick={() => { this.selectedWallet = null; }}>
                     </span>
-                </div>
-
-                <div class="desc">
-                    <span>Wallets pulled from </span>
-                    <a href={`https://ud.me/${walletDomain}`}
-                        target="blank" rel="noopener">
-                        {walletDomain}
-                    </a>
                 </div>
             </Host>
         );
