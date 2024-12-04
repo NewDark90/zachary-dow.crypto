@@ -32,7 +32,7 @@
         "cryptocurrency-icons": "^0.18.0",
         "dotenv": "^16.0.0",
         "ionicons": "^6.0.1",
-        "ipfs-core": "^0.14.2",
+        "ipfs-core": "^0.17.0",
         "ipfs-core-types": "^0.10.3",
         "ipfs-http-client": "^56.0.2",
         "jest": "^27.5.1",
